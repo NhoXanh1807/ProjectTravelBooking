@@ -1,0 +1,32 @@
+from Crypto.Cipher import AES
+import hashlib
+
+# Dữ liệu bạn có
+ciphertext_hex = "c92b7734070205bdf6c0087a751466ec13ae15e6f1bcdd3f3a535ec0f4bbae66" # Thay bằng ciphertext thực tế
+ciphertext = bytes.fromhex(ciphertext_hex)
+
+# Đọc danh sách từ từ wordlist.txt
+with open("C:/Users/nguye/Downloads/cryptohack-wordlist.txt", "r") as f:
+    words = [w.strip() for w in f.readlines()]
+
+# Duyệt qua từng từ trong wordlist
+for word in words:
+    # Tạo khóa hash từ từ hiện tại
+    hash_password = hashlib.md5(word.encode()).digest()
+
+    # Tạo cipher AES với chế độ ECB
+    cipher = AES.new(hash_password, AES.MODE_ECB)
+
+    try:
+        # Giải mã ciphertext
+        decrypted = cipher.decrypt(ciphertext)
+
+        # Kiểm tra nếu chuỗi 'crypto' có trong plaintext
+        if b'crypto' in decrypted:
+            print(f"Found!")
+            print(f"Keyword: {word}")
+            print(f"Hash Password: {hash_password.hex()}")
+            print(f"Plaintext: {decrypted.decode(errors='ignore')}")
+            break
+    except Exception as e:
+        continue
