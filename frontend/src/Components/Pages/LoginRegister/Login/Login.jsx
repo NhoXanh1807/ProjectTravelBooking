@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import "./Login.css";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import {useNavigate} from 'react-router-dom';
 
 function Login() {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
 
   const handleChange = (e) => {
@@ -18,6 +21,8 @@ function Login() {
     // Add your form handling logic here
     console.log("Email:", formData.email);
     console.log("Password:", formData.password);
+    setIsLoggedIn(true); // Set the state
+    navigate("/", { state: { isLoggedIn: true } }); // Navigate to Homepage with state
   };
 
   const handleTogglePassword = () => {
