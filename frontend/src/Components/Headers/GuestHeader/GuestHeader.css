@@ -1,0 +1,14 @@
+.GuestHeader {
+    display: flex;
+    flex-direction: row;
+}
+
+.GuestHeader ul {
+    margin-left: 450px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 100%;
+    padding: 20px;
+    gap: 20px;
+}
