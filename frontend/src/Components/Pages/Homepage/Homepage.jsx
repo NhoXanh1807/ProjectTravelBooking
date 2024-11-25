@@ -1,17 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 import './Homepage.css';
+import GuestHeader from '../../Headers/GuestHeader/GuestHeader';
 
 function Homepage() {
     return (
-        <div className='Homepage'>
-            <Link to="/login">
-                <button>Login</button>
-            </Link>
-            <Link to="/register">
-                <button>Register</button>
-            </Link>
-        </div>
+        <body>
+            <GuestHeader/>
+            <div className='Homepage'>
+                
+            </div>
+        </body>
     );
 };
 

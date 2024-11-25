@@ -1,14 +1,92 @@
 .GuestHeader {
+    height: 600px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    justify-content: space-between;
+    background-image: url('./bg.jpg');
+    background-size: cover;
 }
 
-.GuestHeader ul {
-    margin-left: 450px;
+.GuestHeader .header-above {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.GuestHeader .header-left {
+    margin: 10px;
+}
+
+.GuestHeader .header-left .logo {
+    text-decoration: none;
+    color: orange;
+}
+
+.GuestHeader .header-right {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    width: 100%;
-    padding: 20px;
-    gap: 20px;
+    align-items: center;
+    gap: 15px;
+    margin: 10px;
+}
+
+.GuestHeader .header-right button {
+    padding: 5px;
+    border-radius: 5px;
+    text-decoration: none;
+    background-color: orange;
+    color: black;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.GuestHeader .header-right .header-link {
+    text-decoration: none;
+    color: darkblue;
+}
+
+.GuestHeader .header-below {
+    align-self: center;
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    gap: 10px;
+    margin: 10px;
+    margin-bottom: 10px;
+}
+
+.GuestHeader .header-below button {
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    background-color: orange;
+    color: #255783;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.GuestHeader select {
+    width: 200px;
+    padding: 10px;
+    border-radius: 10px;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    background-color: #255783;
+    color: white;
+}
+
+.GuestHeader input {
+    width: 200px;
+    padding: 10px;
+    border-radius: 10px;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    background-color: #255783;
+    color: white;
 }
