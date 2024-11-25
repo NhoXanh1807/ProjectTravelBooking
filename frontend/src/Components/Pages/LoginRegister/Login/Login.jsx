@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Login.css";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -49,7 +50,7 @@ function Login() {
                 required
               />
               <span className="toggle-password" onClick={handleTogglePassword}>
-                {showPassword ? "👁️" : "👁️"}
+                {showPassword ? (<FaEye/>) : (<FaEyeSlash/>)}
               </span>
             </div>
             <div className="links">

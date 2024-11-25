@@ -69,7 +69,7 @@
     font-weight: 700;
 }
 
-.GuestHeader select {
+.GuestHeader .select-group select {
     width: 200px;
     padding: 10px;
     border-radius: 10px;

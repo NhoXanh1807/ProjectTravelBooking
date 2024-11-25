@@ -1,6 +1,7 @@
 import React from 'react';
 import './GuestHeader.css';
 import { Link } from 'react-router-dom';
+import {FaLocationDot} from 'react-icons/fa6';
 
 const GuestHeader = () => {
     return (
@@ -23,12 +24,16 @@ const GuestHeader = () => {
             </div>
             
             <div className="header-below">
-                <select>
-                    <option hidden value="default">Location</option>
-                    <option value="option1">Hồ Chí Minh</option>
-                    <option value="option2">Hà Nội</option>
-                    <option value="option3">Cần Thơ</option>
-                </select>
+                <div className='select-group'>
+                    <FaLocationDot/>
+                    <select>
+                        <option hidden value="default">Location</option>
+                        <option value="option1">Hồ Chí Minh</option>
+                        <option value="option2">Hà Nội</option>
+                        <option value="option3">Cần Thơ</option>
+                    </select>
+                </div>
+                
                 <input
                     type="Date"
                     placeholder='From Date'
