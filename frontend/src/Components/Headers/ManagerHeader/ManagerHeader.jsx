@@ -1,24 +1,11 @@
-import {React, useState} from 'react';
-import './TravelerHeader.css';
+import React from 'react';
+import './ManagerHeader.css';
 import { Link } from 'react-router-dom';
 import {FaLocationDot} from 'react-icons/fa6';
-import { useNavigate } from 'react-router-dom';
 
-const TravelerHeader = () => {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const navigate = useNavigate();
-
-    const handleClick = () => {
-        setIsLoggedIn(false); // Set the state
-        navigate("/", { state: { isLoggedIn: false } }); // Navigate to Homepage with state
-    };
-
-    const HandleNavigate = (link) => {
-        navigate(link, { state: { isLoggedIn: true } });
-    }
-
+const ManagerHeader = () => {
     return (
-        <header className='TravelerHeader'>
+        <header className='ManagerHeader'>
             <div className="header-above">
                 <div className="header-left">
                     <Link to="/" className='logo'>
@@ -27,10 +14,12 @@ const TravelerHeader = () => {
                     
                 </div>
                 <div className="header-right">
-                    <Link tp ="/" state= {{isLoggedIn: isLoggedIn}} className="header-link">Home</Link>
-                    <Link to="/tours" state= {{isLoggedIn: isLoggedIn}} className="header-link">Tours</Link>
-                    <Link to="/booking" state= {{isLoggedIn: isLoggedIn}} className="header-link">Booking</Link>
-                    <button onClick={handleClick}>Log out</button>
+                    <Link to="/" className="header-link">Home</Link>
+                    <Link to="/tours" className="header-link">Tours</Link>
+                    <Link to="/login" className="header-link">Login</Link>
+                    <Link to="/register" className="header-link">
+                        <button>Register</button>
+                    </Link>
                 </div>
             </div>
             
@@ -59,4 +48,4 @@ const TravelerHeader = () => {
     );
 };
 
-export default TravelerHeader;
+export default ManagerHeader;
