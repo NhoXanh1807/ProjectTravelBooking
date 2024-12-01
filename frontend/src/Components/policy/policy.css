@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root{
+    --font:"Be Vietnam Pro", sans-serif;
+}
+
+
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    font-family: "Be Vietnam Pro", sans-serif;
+    line-height: 1.4;
+    background-color: #FDFDFD;
+  }
+  a {
+    text-decoration: none;
+  }
+  .section-4 {
+    padding: 10px;
+    font-size: 52px;
+    font-weight: 700;
+    font-family: var(--font);
+    color: #003459;
+  }
+  .section-4 .container{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 100%;
+    padding-right: 75px;
+    padding-left: 75px;
+  }
+  .section-4__warp {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    padding: 20px 32px;
+  }
+  .section-4__warp .blog-item {
+    width: calc((100% - 40px) / 3);
+    gap: 30px;
+    padding: 10px;
+    
+  }
+
+  .blog-item {
+    box-shadow: 0px 4px 28px -2px rgba(0, 0, 0, 0.0784313725);
+    border-radius: 12px;
+    padding: 8px;
+  }
+  .blog-item__image {
+    border-radius: 10px;
+    overflow: hidden;
+    aspect-ratio: 364/240;
+    margin-bottom: 8px;
+  }
+  .blog-item__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .blog-item__content {
+    padding: 8px;
+  }
+  .blog-item__tag {
+    background-color: #00A7E7;
+    padding: 2px 10px;
+    border-radius: 28px;
+    display: inline-block;
+    font-weight: 700;
+    font-size: 10px;
+    color: #FDFDFD;
+  }
+  .blog-item__title {
+    margin-top: 10px;
+    margin-bottom: 6px;
+    font-weight: 700;
+    font-size: 16px;
+    color: #00171F;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+  }
+  .blog-item__desc {
+    margin: 0;
+    font-weight: 400;
+    font-size: 14px;
+    color: #242B33;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+  }

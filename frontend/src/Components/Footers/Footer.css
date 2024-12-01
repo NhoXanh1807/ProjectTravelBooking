@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Limelight&family=Qwitcher+Grypen:wght@400;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root{
+    --font:"Be Vietnam Pro", sans-serif;
+    --font1:"Limelight", sans-serif;
+}
+
+
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    font-family: "Be Vietnam Pro", sans-serif;
+    line-height: 1.4;
+    background-color: #FDFDFD;
+  }
+  a {
+    text-decoration: none;
+  }
+.container{
+  width: 60%;
+}
+.footer {
+    width: 100%;
+    background: #CEE7E6;
+    border-radius: 40px 40px 0 0;
+    padding: 80px 0 40px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .footer__middle {
+    padding: 40px 0;
+    border-bottom: 1px solid #CCD1D2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  .footer__middle-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 10px 60px;
+  }
+  .footer__middle-links ul li a {
+    font-weight: 500;
+    font-size: 16px;
+    color: #00171F;
+  }
+  .footer__middle-links ul li a:hover {
+    color: #00A7E7;
+  }
+  .footer__socials ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 10px 40px;
+  }
+  .footer__socials ul li a {
+    font-size: 24px;
+    color: #00171F;
+  }
+  .footer__socials ul li a:hover {
+    color: #00A7E7;
+  }
+  .footer__bottom {
+    width: 100%;
+    padding-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer__copyright {
+    width: 33.33%;
+    font-weight: 500;
+    font-size: 14px;
+    color: #667479;
+    text-align: center;
+  }
+  .footer__logo {
+    width: auto; /* Allow the logo to resize */
+    text-align: center;
+    flex: 1 1 100%; /* Make the logo span the full width on small screens */
+    font-family: var(--font1);
+    font-size: 48px;
+    font-weight: 400;
+    color: #E5A13D;
+    width: 33.33%;
+  }
+  .footer__logo img {
+    width: 115px;
+    height: auto;
+  }
+  .footer__bottom-links {
+    width: 33.33%;
+    text-align: center;
+  }
+  .footer__bottom-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    /*  */
+    /* justify-content: flex-end; */
+    /*  */
+    justify-content: center;
+    gap: 20px;
+  }
+  .footer__bottom-links ul li a {
+    font-weight: 500;
+    font-size: 14px;
+    color: #667479;
+  }
+  .footer__bottom-links ul li a:hover {
+    color: #00A7E7;
+  }

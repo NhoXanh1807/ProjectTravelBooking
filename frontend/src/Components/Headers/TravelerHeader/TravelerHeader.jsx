@@ -1,57 +1,98 @@
-import {React, useState} from 'react';
+// TravelerHeader.jsx
+import React, { useState } from 'react';
+import { Link, useNavigate, NavLink } from 'react-router-dom';
+// import {Container,Row,Button} from 'reactstrap';
 import './TravelerHeader.css';
-import { Link } from 'react-router-dom';
-import {FaLocationDot} from 'react-icons/fa6';
-import { useNavigate } from 'react-router-dom';
-
+const nav_links=[
+    {
+        path:'/home',
+        display:'Home'
+    },
+    {
+        path:'/tours',
+        display:'Tours'
+    },
+    {
+        path:'/booking',
+        display:'Booking'
+    }
+]
 const TravelerHeader = () => {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(true); // Assuming initially logged in
+    const [location, setLocation] = useState('');
+    const [fromDate, setFromDate] = useState('');
+    const [toDate, setToDate] = useState('');
     const navigate = useNavigate();
 
     const handleClick = () => {
-        setIsLoggedIn(true); // Set the state
-        navigate("/", { state: { isLoggedIn: false } }); // Navigate to Homepage with state
+        setIsLoggedIn(false);
+        navigate("/", { state: { isLoggedIn: false } });
     };
 
     return (
-        <header className='TravelerHeader'>
-            <div className="header-above">
+        <section className='section-1'>
+            <header className='TravelerHeader'>
                 <div className="header-left">
-                    <Link to="/" className='logo'>
-                        <h1>Tripzy</h1>
-                    </Link>
-                    
+                    <Link to="/" className='logo'>Tripzy</Link>
                 </div>
                 <div className="header-right">
                     <Link to="/" className="header-link">Home</Link>
                     <Link to="/tours" className="header-link">Tours</Link>
                     <Link to="/booking" className="header-link">Booking</Link>
-                    <button onClick={handleClick}>Log out</button>
+                    {isLoggedIn ? (
+                        <button onClick={handleClick}>Log out<i class="fa-solid fa-right-from-bracket"></i></button>
+                    ) : (
+                        <Link to="/login" className="header-link">
+                            <button>Register</button></Link>
+                    )}
                 </div>
+            </header>
+
+            <div className="search-bar">
+                <div className="select-group">
+                    <div className="search-bar__inner-right">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>Location:</span>
+                    </div>
+                    <div class="custom-select-container">
+                        <select
+                            value={location}
+                            onChange={(e) => setLocation(e.target.value)}
+                            aria-label="Select location"
+                        >
+                            <option value="Hồ Chí Minh">Hồ Chí Minh</option>
+                            <option value="Hà Nội">Hà Nội</option>
+                            <option value="Cần Thơ">Cần Thơ</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div className="choose-date">
+                    From:
+                    <input
+                        type="date"
+                        value={fromDate}
+                        onChange={(e) => setFromDate(e.target.value)}
+                        placeholder='From Date'
+                        aria-label="From date"
+                    />
+                    <div className="bar">
+                        <i class="fa-solid fa-minus"></i>
+                    </div>
+                    To:
+                    <input
+                        type="date"
+                        value={toDate}
+                        onChange={(e) => setToDate(e.target.value)}
+                        placeholder='To Date'
+                        aria-label="To date"
+                    />
+                </div>
+
+                <button aria-label="Search for trips">Search</button>
             </div>
             
-            <div className="header-below">
-                <div className='select-group'>
-                    <FaLocationDot/>
-                    <select>
-                        <option hidden value="default">Location</option>
-                        <option value="option1">Hồ Chí Minh</option>
-                        <option value="option2">Hà Nội</option>
-                        <option value="option3">Cần Thơ</option>
-                    </select>
-                </div>
-                
-                <input
-                    type="Date"
-                    placeholder='From Date'
-                />
-                <input
-                    type="Date"
-                    placeholder='To Date'
-                />
-                <button>Search</button>
-            </div>
-        </header>
+        </section>
     );
 };
 

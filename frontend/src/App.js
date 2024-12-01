@@ -1,9 +1,9 @@
 import React from "react";
-import RoutePath from "./Components/Routes/RoutePath";
+import Layout from "./Components/layout/layout";
 
 function App() {
   return (
-    <RoutePath/>
+    <Layout/>
   );
 }
 
