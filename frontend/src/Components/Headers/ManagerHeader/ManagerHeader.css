@@ -1,0 +1,92 @@
+.ManagerHeader {
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-image: url('./bg.jpg');
+    background-size: cover;
+}
+
+.ManagerHeader .header-above {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ManagerHeader .header-left {
+    margin: 10px;
+}
+
+.ManagerHeader .header-left .logo {
+    text-decoration: none;
+    color: orange;
+}
+
+.ManagerHeader .header-right {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 15px;
+    margin: 10px;
+}
+
+.ManagerHeader .header-right button {
+    padding: 5px;
+    border-radius: 5px;
+    text-decoration: none;
+    background-color: orange;
+    color: black;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.ManagerHeader .header-right .header-link {
+    text-decoration: none;
+    color: darkblue;
+}
+
+.ManagerHeader .header-below {
+    align-self: center;
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    gap: 10px;
+    margin: 10px;
+    margin-bottom: 10px;
+}
+
+.ManagerHeader .header-below button {
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    background-color: orange;
+    color: #255783;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.ManagerHeader .select-group select {
+    width: 200px;
+    padding: 10px;
+    border-radius: 10px;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    background-color: #255783;
+    color: white;
+}
+
+.ManagerHeader input {
+    width: 200px;
+    padding: 10px;
+    border-radius: 10px;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    background-color: #255783;
+    color: white;
+}
