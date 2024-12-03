@@ -9,7 +9,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: url('./register.jpg') no-repeat center center fixed;
+  background: url('../../../assets/image/register.jpg') no-repeat center center fixed;
   background-size: cover;
 }
 

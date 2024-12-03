@@ -1,6 +1,6 @@
 import './Footer.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
-
+import { Link } from 'react-router-dom';
 function Footer() {
     return (
         <footer className="footer">
@@ -9,44 +9,40 @@ function Footer() {
                     <nav className="footer__middle-links">
                         <ul>
                             <li>
-                                {" "}
-                                <a href="#">Home</a>
+                                <Link to={'/home'}>Home</Link>
                             </li>
                             <li>
-                                {" "}
-                                <a href="#">Tour</a>
+                                <Link to={'/tour'}>Tour</Link>
                             </li>
                             <li>
-                                {" "}
-                                <a href="#">Booking</a>
+                                <Link to={'/'}>Booking</Link>
                             </li>
                             <li>
-                                {" "}
-                                <a href="#">Contact</a>
+                                <Link to={'/'}>Contact</Link>
                             </li>
                         </ul>
                     </nav>
                     <nav className="footer__socials">
                         <ul>
                             <li>
-                                <a href="#" target="_blank">
+                                <Link to={'/'}>
                                     <i className="fa-brands fa-facebook" />
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a href="#" target="_blank">
+                                <Link to={'/'}>
                                     <i className="fa-brands fa-x-twitter" />
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a href="#" target="_blank">
+                                <Link to={'/'}>
                                     <i className="fa-brands fa-instagram" />
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a href="#" target="_blank">
+                                <Link to={'/'}>
                                     <i className="fa-brands fa-youtube" />
-                                </a>
+                                </Link>
                             </li>
                         </ul>
                     </nav>
@@ -61,10 +57,10 @@ function Footer() {
                     <nav className="footer__bottom-links">
                         <ul>
                             <li>
-                                <a href="#">Điều khoản dịch vụ</a>
+                            <Link to={'/policy/2'}>Terms of Service</Link>
                             </li>
                             <li>
-                                <a href="#">Chính sách bảo mật</a>
+                            <Link to={'/policy/1'}>Privacy Policy</Link>
                             </li>
                         </ul>
                     </nav>

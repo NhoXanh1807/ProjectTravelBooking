@@ -7,7 +7,7 @@ import SearchResult from "../Pages/Tours/ToursDetail";
 import Login from "../Pages/LoginRegister/Login/Login";
 import Register from "../Pages/LoginRegister/Register/Register";
 import Recovery from "../Pages/LoginRegister/Login/Recovery";
-
+import Policy from "../shared/policy/policy";
 const Routers = ({ isLoggedIn, setIsLoggedIn }) => {
     return (
         <Routes>
@@ -15,6 +15,7 @@ const Routers = ({ isLoggedIn, setIsLoggedIn }) => {
             <Route path="/home" element={<Homepage isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />} />
             <Route path="/tour" element={<Tours />} />
             <Route path="/tour/:id" element={<ToursDetail />} />
+            <Route path="/policy/:id" element={<Policy/>}/>
             <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
             <Route path="/register" element={<Register />} />
             <Route path="/recovery" element={<Recovery />} />

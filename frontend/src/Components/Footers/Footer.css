@@ -48,7 +48,8 @@
     gap: 10px 60px;
   }
   .footer__middle-links ul li a {
-    font-weight: 500;
+    text-decoration: none;
+    font-weight: 600;
     font-size: 16px;
     color: #00171F;
   }
@@ -106,15 +107,17 @@
     padding: 0;
     margin: 0;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 32px;
+    /* gap: 32px; */
     /*  */
     /* justify-content: flex-end; */
     /*  */
     justify-content: center;
-    gap: 20px;
+    gap: 30px;
   }
   .footer__bottom-links ul li a {
+    text-decoration: none;
     font-weight: 500;
     font-size: 14px;
     color: #667479;

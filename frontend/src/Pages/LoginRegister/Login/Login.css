@@ -8,7 +8,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: url('./login.jpg') no-repeat center center fixed;
+    background: url('../../../assets/image/login.jpg') no-repeat center center fixed;
     background-size: cover;
   }
   

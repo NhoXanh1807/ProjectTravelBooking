@@ -26,7 +26,7 @@
     height: auto;
   }
 .inner-tag__warp {
-    background-image: url('./bg-1.svg');
+    background-image: url('../../assets/image/bg-1.svg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -84,8 +84,6 @@
     flex-wrap: wrap;
     justify-content: flex-end;
     gap: 10px 18px;
-  }
-  .button-outline {
     display: inline-flex;
     align-items: center;
     height: 44px;
@@ -97,3 +95,12 @@
     border-radius: 57px;
     border: 1.5px solid #003459;
   }
+  .inner-tag__buttons:hover{
+    background-color: #00A7E7;
+    border: 1.5px solid #00A7E7;
+  }
+  .inner-tag__buttons a{
+    text-decoration: none;
+    color: #ffffff;
+  }
+  

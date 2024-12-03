@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Register.css';
+import { useNavigate } from 'react-router-dom';
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -12,7 +13,7 @@ function Register() {
     email: '',
     gender: ''
   });
-
+  const navigate = useNavigate(); 
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -23,6 +24,9 @@ function Register() {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle form submission here
+    setTimeout(() => {
+      navigate('/login');
+    }, 1000);
   };
 
   return (

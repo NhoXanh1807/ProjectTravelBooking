@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import './Homepage.css';
+// import React, { useState } from 'react';
+import '../../styles/Homepage.css';
 import GuestHeader from '../../Components/Headers/GuestHeader/GuestHeader';
 import TravelerHeader from '../../Components/Headers/TravelerHeader/TravelerHeader';
-import { useLocation } from 'react-router-dom';
+// import { useLocation } from 'react-router-dom';
 import Footer from '../../Components/Footers/Footer';
-import MostSearched from '../../Components/section/most_searched_tour/most_searched_tour';
-import Tag from '../../Components/tag/tag';
-import Policy from '../../Components/policy/policy';
+import MostSearched from '../../shared/mostsearched/most_searched';
+import Tag from '../../shared/tag/tag';
+import Policy from '../../shared/policy/policy';
 
 function Homepage({ isLoggedIn, setIsLoggedIn }) {
     const handleClick = () => {

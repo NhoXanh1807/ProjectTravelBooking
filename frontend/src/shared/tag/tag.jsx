@@ -1,6 +1,6 @@
 import './inner-tag.css';
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 function Tag() {
     return (
         <div className="inner-tag">
@@ -20,9 +20,9 @@ function Tag() {
                             activities tailored to every travel style.
                         </div>
                         <div className="inner-tag__buttons">
-                            <a className="button-outline" href="#">
+                            <Link to={'/booking'}>
                                 Booking now
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>
