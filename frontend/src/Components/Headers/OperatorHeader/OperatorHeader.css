@@ -1,0 +1,42 @@
+.OperatorHeader {
+    padding: 10px;
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #CEE7E6;
+}
+
+
+.OperatorHeader .logo {
+    color: orange;
+}
+
+.OperatorHeader .header-right {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 50px;
+    padding: 10px;
+}
+
+.OperatorHeader .header-right button {
+    padding: 5px;
+    border-radius: 5px;
+    text-decoration: none;
+    background-color: orange;
+    color: #5D4037;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.OperatorHeader .link {
+    text-decoration: none;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 20px;
+    color: #5D4037;
+}
+

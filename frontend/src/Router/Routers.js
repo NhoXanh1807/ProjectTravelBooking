@@ -8,6 +8,8 @@ import Login from "../Pages/LoginRegister/Login/Login";
 import Register from "../Pages/LoginRegister/Register/Register";
 import Recovery from "../Pages/LoginRegister/Login/Recovery";
 import Policy from "../shared/policy/policy";
+import TourOperator from "../Pages/TourOperator/TourOperator";
+
 const Routers = ({ isLoggedIn, setIsLoggedIn }) => {
     return (
         <Routes>
@@ -20,6 +22,7 @@ const Routers = ({ isLoggedIn, setIsLoggedIn }) => {
             <Route path="/register" element={<Register />} />
             <Route path="/recovery" element={<Recovery />} />
             <Route path="/tour/search" element={<SearchResult />} />
+            <Route path="/tour-operator" element={<TourOperator />} />
         </Routes>
     );
 };
