@@ -17,7 +17,7 @@ const OperatorHeader = () => {
                 <h1>TRIPZY</h1>
             </div>
             <div className="header-right">
-                <Link to='/tours' state={{isLoggedIn: true, isOperator: true}} className='link'>Tours</Link>
+                <Link to='/tour-operator' state={{isLoggedIn: true, isOperator: true}} className='link'>Tours</Link>
                 <Link to='/reports' stat={{isLoggedIn:true, isOperator: true}} className='link'>Reports</Link>
                 <button onClick={handleClick}>Log out</button>
             </div>

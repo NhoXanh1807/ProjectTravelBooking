@@ -9,6 +9,7 @@ import Register from "../Pages/LoginRegister/Register/Register";
 import Recovery from "../Pages/LoginRegister/Login/Recovery";
 import Policy from "../shared/policy/policy";
 import TourOperator from "../Pages/TourOperator/TourOperator";
+import OperatorReports from "../Pages/TourOperator/OperatorReports";
 
 const Routers = ({ isLoggedIn, setIsLoggedIn }) => {
     return (
@@ -23,6 +24,7 @@ const Routers = ({ isLoggedIn, setIsLoggedIn }) => {
             <Route path="/recovery" element={<Recovery />} />
             <Route path="/tour/search" element={<SearchResult />} />
             <Route path="/tour-operator" element={<TourOperator />} />
+            <Route path="/reports" element={<OperatorReports />} />
         </Routes>
     );
 };

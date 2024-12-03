@@ -1,0 +1,34 @@
+.OperatorReports {
+  margin: 0;
+  padding: 20px;
+}
+
+.OperatorReports .container {
+  background-color: #CEE7E6;
+  padding-top: 10px;
+  padding-bottom: 60px;
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 100%;
+  border-radius: 20px;
+}
+
+.OperatorReports .container table {
+  justify-items: center;
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+}
+
+.OperatorReports .container table th {
+  font-size: 20px;
+  color: orange;
+  border-bottom: 1px solid white;
+}
+
+.OperatorReports .container table td {
+  font-size: 20px;
+  color: blue;
+  border-bottom: 1px solid white;
+}
+
