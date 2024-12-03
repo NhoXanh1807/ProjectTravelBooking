@@ -155,3 +155,12 @@ select:focus {
     width: auto; 
     border: 0;
 }
+
+.choose-sort select option{
+    font-family: var(--font);
+    font-size: 24px;
+    font-weight: 700;
+    background-color: #CEE7E6;
+    border: 0;
+    color: orange;
+}

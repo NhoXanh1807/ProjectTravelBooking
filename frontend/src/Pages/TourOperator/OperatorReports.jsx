@@ -27,6 +27,7 @@ const Reports = () => {
                 <th>Refund ID</th>
                 <th>Refund Status</th>
                 <th>Refund Date</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -39,6 +40,11 @@ const Reports = () => {
                   <td>{report.refundId}</td>
                   <td>{report.refundStatus}</td>
                   <td>{report.refundDate}</td>
+                  <td>
+                    <button class="btn">
+                      i
+                    </button>
+                  </td>
                 </tr>
               ))}
             </tbody>

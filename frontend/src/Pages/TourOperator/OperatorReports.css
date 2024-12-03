@@ -28,7 +28,16 @@
 
 .OperatorReports .container table td {
   font-size: 20px;
-  color: blue;
+  color: #255783;
   border-bottom: 1px solid white;
 }
 
+.OperatorReports .container .btn {
+  height: 40px;
+  width: 40px;
+  text-align: center;
+  background-color: #255783;
+  color: white;
+  font-weight: 700;
+  border-radius: 50%;
+}
