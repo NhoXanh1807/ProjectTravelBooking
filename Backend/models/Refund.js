@@ -1,46 +1,38 @@
 import mongoose from 'mongoose';
 
 const refundSchema = new mongoose.Schema({
-    RefundID: {
+    RefundStatus: {
         type: String,
-        required: true,
-        unique: true,
-        trim: true
+        enum: {
+            values: ['Pending', 'Approved', 'Rejected'],
+            message: '{VALUE} is not a valid refund status.'
+        },
+        default: 'Pending'
     },
     RefundAmount: {
         type: Number,
         required: true,
-        min: 0 // Số tiền hoàn trả không được âm
+        min: 0
     },
-    RefundDate: {
+    RequestDate: {
         type: Date,
         required: true,
-        default: Date.now // Mặc định là ngày giờ hiện tại khi tạo refund
+        default: Date.now
     },
-    RefundMethod: {
-        type: String,
-        required: true,
-        enum: ['PayPal', 'Bank Transfer', 'Credit Card'], // Các phương thức hoàn tiền hợp lệ
-    },
-    RefundStatus: {
-        type: String,
-        enum: {
-            values: ['Completed', 'Pending', 'Failed'],
-            message: '{VALUE} is not a valid refund status.'
-        },
-        default: 'Pending' // Mặc định là Pending khi tạo refund
+    ProcessedDate: {
+        type: Date
     },
     BookingID: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Booking', // Tham chiếu đến Booking collection
+        ref: 'Booking',
         required: true
     },
     PaymentID: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Payment', // Tham chiếu đến Payment collection
+        ref: 'Payment',
         required: true
     }
-},
+}, 
 { timestamps: true });
 
-export default mongoose.model("Refund", refundSchema);
+export default mongoose.model('Refund', refundSchema);
