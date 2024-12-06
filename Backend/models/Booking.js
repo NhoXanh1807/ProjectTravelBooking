@@ -1,12 +1,6 @@
 import mongoose from 'mongoose';
 
 const bookingSchema = new mongoose.Schema({
-    BookingID: {
-        type: String,
-        required: true,
-        unique: true,
-        trim: true
-    },
     BookingStatus: {
         type: String,
         enum: {
@@ -38,7 +32,7 @@ const bookingSchema = new mongoose.Schema({
     PaymentID: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Payment', // Tham chiếu đến Payment collection
-        required: true
+        default: null
     },
     RefundID: {
         type: mongoose.Schema.Types.ObjectId,

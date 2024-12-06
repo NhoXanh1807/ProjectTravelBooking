@@ -1,13 +1,6 @@
 import mongoose from 'mongoose';
 
 const tourSchema = new mongoose.Schema({
-    TourID: {
-        type: String,
-        required: true,
-        unique: true,
-        trim: true,
-        index: true // Đảm bảo unique index được tạo
-    },
     TourName: {
         type: String,
         required: true,

@@ -8,6 +8,11 @@ import Login from "../Pages/LoginRegister/Login/Login";
 import Register from "../Pages/LoginRegister/Register/Register";
 import Recovery from "../Pages/LoginRegister/Login/Recovery";
 import Policy from "../shared/policy/policy";
+import TourOperator from "../Pages/TourOperator/TourOperator";
+import OperatorReports from "../Pages/TourOperator/OperatorReports";
+import ViewBooking from "../shared/ViewBooking/ViewBooking";
+import ViewBookingRefund from "../shared/ViewBooking/ViewBookingRefund";
+
 const Routers = ({ isLoggedIn, setIsLoggedIn }) => {
     return (
         <Routes>
@@ -19,7 +24,11 @@ const Routers = ({ isLoggedIn, setIsLoggedIn }) => {
             <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
             <Route path="/register" element={<Register />} />
             <Route path="/recovery" element={<Recovery />} />
-            <Route path="/tour/search" element={<SearchResult />} />   
+            <Route path="/tour/search" element={<SearchResult />} />
+            <Route path="/tour-operator" element={<TourOperator />} />
+            <Route path="/reports" element={<OperatorReports />} />
+            <Route path="/booking" element={<ViewBooking />} />
+            <Route path="/booking-refund" element={<ViewBookingRefund />} />
         </Routes>
     );
 };

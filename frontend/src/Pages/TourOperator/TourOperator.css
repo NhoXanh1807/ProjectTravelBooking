@@ -1,0 +1,15 @@
+.TourOperator {
+    margin: 0;
+    padding: 20px;
+}
+
+.TourOperator .tour-list {
+    background-color: #CEE7E6;
+    padding-top: 10px;
+    padding-bottom: 60px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 100%;
+    border-radius: 20px;
+}
+
