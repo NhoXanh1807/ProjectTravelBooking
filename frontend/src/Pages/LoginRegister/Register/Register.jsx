@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import './Register.css';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from './../../../context/AuthContext'; 
+import { BASE_URL } from './../../../utils/config'; // Đảm bảo BASE_URL được khai báo đúng
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -13,7 +15,9 @@ function Register() {
     email: '',
     gender: ''
   });
+  const { dispatch } = useContext(AuthContext); // Để sử dụng dispatch từ context
   const navigate = useNavigate(); 
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -21,12 +25,44 @@ function Register() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission here
-    setTimeout(() => {
-      navigate('/login');
-    }, 1000);
+    // Bắt đầu yêu cầu đăng ký
+    dispatch({ type: 'LOGIN_START' });
+
+    try {
+      const response = await fetch(`${BASE_URL}/auth/register`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          FirstName: formData.firstName,
+          LastName: formData.lastName,
+          Username: formData.username,
+          Email: formData.email,
+          Password: formData.password,
+          Phone: formData.phoneNumber,
+          DateOfBirth: formData.dateOfBirth,
+          Gender: formData.gender,
+        })
+      });
+
+      const data = await response.json();
+      
+      if (data.success) {
+        dispatch({ type: 'REGISTER_SUCCESS' });
+        setTimeout(() => {
+          navigate('/login'); // Điều hướng sau khi đăng ký thành công
+        }, 1000);
+      } else {
+        dispatch({ type: 'LOGIN_FAILURE', payload: data.message });
+        alert(data.message); // Thông báo lỗi nếu có
+      }
+    } catch (err) {
+      dispatch({ type: 'LOGIN_FAILURE', payload: err.message });
+      alert('An error occurred, please try again!');
+    }
   };
 
   return (

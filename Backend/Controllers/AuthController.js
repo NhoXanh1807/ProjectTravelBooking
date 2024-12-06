@@ -37,9 +37,9 @@ export const register = async (req, res) => {
 };
 
 export const login = async (req, res) => {
-    const Username = req.body.Username;
+    const Email = req.body.Email;
     try {
-        const user = await User.findOne({ Username });
+        const user = await User.findOne({ Email });
         if (!user) {
             return res.status(401).json({ success: false, message: 'User Not Found' });
         }
@@ -47,7 +47,7 @@ export const login = async (req, res) => {
         // Kiểm tra mật khẩu
         const checkCorrectPassword = await bcrypt.compare(req.body.Password, user.Password);
         if (!checkCorrectPassword) {
-            return res.status(401).json({ success: false, message: 'Incorrect username or password' });
+            return res.status(401).json({ success: false, message: 'Incorrect email or password' });
         }
 
         // Tạo JWT token và bao gồm role trong token nhưng không trả về trong response
