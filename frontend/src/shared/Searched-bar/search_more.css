@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Limelight&family=Qwitcher+Grypen:wght@400;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root {
+    --font: "Be Vietnam Pro", sans-serif;
+    --font1: "Limelight", sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    margin: 0;
+    font-family: "Be Vietnam Pro", sans-serif;
+    line-height: 1.4;
+    background-color: #FDFDFD;
+}
+
+a {
+    text-decoration: none;
+}
+.searchMore{
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px;
+    background-color: rgba(206, 231, 230, 0.5);
+    border-radius: 10px 10px 0px 0px ;
+    width: 100%;
+    
+}
+
+.searchMore .searchMore-one{
+    display: flex;
+    padding: 0px 50px 0px 50px;
+    gap: 5px;
+    height: 60%;
+    align-items: center;
+}
+/* .searchMore .searchMore-one .bar{
+    rotate: 90deg;
+    color: #ffffff;
+} */
+.searchMore .searchMore-one .search-keywords{
+    display: flex;
+    width: 80%;
+    height:auto;
+    align-items: center;
+    background-color: #255783;
+    padding: 10px;
+    border-radius: 20px;
+}
+.searchMore .searchMore-one .search-keywords input{
+    margin: 0;
+}
+.searchMore .searchMore-one .select-group-new{
+    height: auto;
+    background-color: #255783;
+    padding: 16px;
+    border-radius: 20px;
+    display: flex;
+    gap: 10px;
+}
+.searchMore .searchMore-one .search-keywords i{
+    font-size: 30px;
+    color: #ffffff;
+}
+.searchMore .searchMore-one .search-keywords input{
+    background-color: transparent;
+    border: 0;
+}
+.searchMore .searchMore-one button{
+    height: 48px;
+    width: 11%;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    padding: 13px 29px 13px 29px;
+    border-radius: 10px;
+}
+.searchMore .searchMore-two{
+    display: flex;
+    padding: 0px 50px 0px 50px;
+    height: auto;
+    gap: 10px;
+}
+.searchMore .searchMore-two .choose-dates{
+    display: block;
+    text-align: left;
+    font-size: 20px;
+    padding: 10px;
+    background-color: #255783;
+    padding: 0px 10px 0px 10px;
+    border-radius: 20px;
+    font-weight: 700;
+    color: #ffffff;
+    width: 50%;
+}
+.searchMore .searchMore-two .choose-dates .choose-date-main{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    height: 50%;
+    padding-left: 30px;
+    border-top: 1px solid #ffffff;
+}
+.searchMore .searchMore-two .choose-dates .choose-date-main input{
+    background-color: transparent;
+    border: 0;
+    height: 60%;
+    text-align: center;
+    padding: 0;
+    color: #ffffff;
+    font-family: var(--font);
+    font-weight: 700;
+}
+.searchMore .searchMore-two .choose-pricerange{
+    display: block;
+    text-align: left;
+    font-size: 20px;
+    padding: 10px;
+    background-color: #255783;
+    padding: 0px 10px 0px 10px;
+    border-radius: 20px;
+    font-weight: 700;
+    color: #ffffff;
+    width: 50%;
+}
+.searchMore .searchMore-two .choose-pricerange .choose-pricerange-main{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    height: 50%;
+    padding-left: 30px;
+    border-top: 1px solid #ffffff;
+}
+.searchMore .searchMore-two .choose-pricerange .choose-pricerange-main input{
+    background-color: transparent;
+    border: 0;
+    height: 60%;
+}

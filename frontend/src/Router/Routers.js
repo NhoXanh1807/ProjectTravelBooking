@@ -13,13 +13,13 @@ const Routers = ({ isLoggedIn, setIsLoggedIn }) => {
         <Routes>
             <Route path='/' element={<Navigate to='/home' />} />
             <Route path="/home" element={<Homepage isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />} />
-            <Route path="/tour" element={<Tours />} />
-            <Route path="/tour/:id" element={<ToursDetail />} />
+            <Route path="/tour" element={<Tours isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />} />
+            <Route path="/tour/tourdetail" element={<ToursDetail />} />
             <Route path="/policy/:id" element={<Policy/>}/>
             <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
             <Route path="/register" element={<Register />} />
             <Route path="/recovery" element={<Recovery />} />
-            <Route path="/tour/search" element={<SearchResult />} />
+            <Route path="/tour/search" element={<SearchResult />} />   
         </Routes>
     );
 };

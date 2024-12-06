@@ -19,7 +19,7 @@
     text-decoration: none;
   }
   .section-1{
-    padding: 17px 27px 0px 27px;
+    padding: 0;
     background-image: url('../../../assets/image/bg.png');
     display: flex;
     flex-direction: column;

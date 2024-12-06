@@ -7,7 +7,7 @@ const tourData = [
         TourStatus: "Available",
         AvailableSeats: 17,
         Description: "A 10-day tour exploring the beauty of Vietnam from North to South.",
-        Price: 500,
+        Price: 6900000,
         Duration: "10 days",
         Capacity: 20,
         Locations: [
@@ -48,7 +48,7 @@ const tourData = [
         TourStatus: "Available",
         AvailableSeats: 20,
         Description: "A 7-day adventure exploring the natural and cultural wonders of Vietnam.",
-        Price: 1500,
+        Price: 15000000,
         Duration: "7 days",
         Capacity: 30,
         Locations: [
