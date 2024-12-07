@@ -31,21 +31,24 @@
     padding: 20px;
 }
 
-.search-bar button {
+.search-bar .header-link {
     padding: 10px;
     border-radius: 10px;
     text-decoration: none;
     background-color: orange;
-    color: #255783;
+    color: #ffffff;
     font-family: 'Be Vietnam Pro', sans-serif;
     font-size: 20px;
     font-weight: 700;
-    width: 10%;
-    height: 48px;
+    width: auto;
+    height: auto;
 }
-.search-bar button:hover{
-    color: #ffffff;
-    background-color: #00A7E7;
+.search-bar .header-link button{
+    background-color: transparent;
+    border: 0;
+}
+.search-bar.header-link  button:hover{
+    background-color: nonr;
 }
 
 .select-group {

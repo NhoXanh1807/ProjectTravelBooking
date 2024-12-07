@@ -13,9 +13,7 @@ const GuestHeaderTour = ({ handleClick }) => {
                 <div className="header-right">
                     <Link to="/" className="header-link">Home</Link>
                     <Link to="/tour" className="header-link">Tours</Link>
-                    <Link to="/login" className="header-link">
-                    <button>Login</button>
-                    </Link>
+                    <Link to="/login" className="header-link">Login</Link>
 
                     <Link to="/register" className="header-link">
                         <button>Register</button>
