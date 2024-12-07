@@ -29,16 +29,7 @@
     background-position: center; /* Centers the image */
     background-repeat: no-repeat;
   }
-  .section-1 .section-1-content{
-    font-size: 48px;
-    font-family: var(--font);
-    font-weight: 700;
-    color: #255783;
-    background-color: #ffffff;
-    padding: 10px;
-    height: 20%;
-    align-items: center;
-  }
+
 .TravelerHeader {
     display: flex;
     flex-direction: row;

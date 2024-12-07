@@ -1,5 +1,5 @@
 import './tourbar_fourth.css';
-import bookingData from "../../assets/data/booking";
+import { Link } from 'react-router-dom';
 
 function Tourbarfourth({ item, booking }) {
     const { TourName, Locations, StartDate, EndDate, Price, LanguageOffers, TourStatus, _id } = item;
@@ -11,20 +11,32 @@ function Tourbarfourth({ item, booking }) {
             return (
                 <div className="paid-btn">
                     PAID
-                    <button className="Paid-cancel">
-                        Cancel
-                    </button>
+                    <Link 
+                        to="/refund"
+                        state={{
+                            booking,
+                            tour: item
+                        }}
+                    >
+                        <button className="Paid-cancel">Cancel</button>
+                    </Link>
                 </div>
             );
-        }
-        else if (booking && booking.BookingStatus === "Confirmed" && TourStatus === "Unavailable") {
+        } else if (booking && booking.BookingStatus === "Confirmed" && TourStatus === "Unavailable") {
             return (
-                <button className="Refund">
-                    Refund<i className="fa-solid fa-arrow-right"></i>
-                </button>
+                <Link 
+                    to="/refund"
+                    state={{
+                        booking,
+                        tour: item
+                    }}
+                >
+                    <button className="Refund">
+                        Refund<i className="fa-solid fa-arrow-right"></i>
+                    </button>
+                </Link>
             );
-        }
-        else if (booking && booking.BookingStatus === "Pending" && TourStatus === "Unavailable") {
+        } else if (booking && booking.BookingStatus === "Pending" && TourStatus === "Unavailable") {
             return (
                 <div className="Unable-pay">
                     Unable to Pay

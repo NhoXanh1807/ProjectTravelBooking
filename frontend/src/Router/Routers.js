@@ -13,6 +13,8 @@ import OperatorReports from "../Pages/TourOperator/OperatorReports";
 import ViewBooking from "../shared/ViewBooking/ViewBooking";
 import ViewBookingRefund from "../shared/ViewBooking/ViewBookingRefund";
 import TourBooking from "../Pages/booking/booking";
+import PaymentPage from "../Pages/Payment/Payment";
+import RefundPage from "../Pages/Refund/Refund";
 
 const Routers = ({ isLoggedIn, setIsLoggedIn }) => {
     return (
@@ -30,6 +32,8 @@ const Routers = ({ isLoggedIn, setIsLoggedIn }) => {
             <Route path="/reports" element={<OperatorReports />} />
             <Route path="/booking" element={<TourBooking isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />} />
             <Route path="/booking-refund" element={<ViewBookingRefund />} />
+            <Route path="/refund" element={<RefundPage/>}/>
+            <Route path="/payment" element={<PaymentPage/>}/>
         </Routes>
     );
 };

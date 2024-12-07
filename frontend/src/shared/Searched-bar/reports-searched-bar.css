@@ -18,7 +18,7 @@
   a {
     text-decoration: none;
   }
-.reports-search-bar {
+.search-bar {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -31,7 +31,7 @@
     padding: 20px;
 }
 
-.reports-search-bar button {
+.search-bar button {
     padding: 10px;
     border-radius: 10px;
     text-decoration: none;
@@ -43,7 +43,7 @@
     width: 10%;
     height: 48px;
 }
-.reports-search-bar button:hover{
+.search-bar button:hover{
     color: #ffffff;
     background-color: #00A7E7;
 }
@@ -73,7 +73,7 @@
     color: white;
 }
 
-.reports-search-bar__inner-right {
+.search-bar__inner-right {
     display: flex;
     align-items: center;
     gap: 5px;
@@ -123,11 +123,9 @@ select:focus {
     pointer-events: none;
     color: #fff;
 }
-.choose-sort, input{
+.choose-date{
     align-items: center;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
     background-color: #255783;
     font-family: 'Be Vietnam Pro', sans-serif;
     font-size: 24px;
@@ -136,31 +134,44 @@ select:focus {
     padding: 20px;
     color: #ffffff;
     gap: 5px;
-    width: 100%;
+    width: 50%;
     height: 80px;
 }
-.choose-sort .bar{
+.choose-date .bar{
     width: auto;
     height: auto;
     rotate: 90deg;
     color: #ffffff;
 }
 
-.choose-sort select{
+.choose-date input{
     background-color: transparent;
     color: #ffffff;
     font-family: var(--font);
     font-weight: 700;
     font-size: 24px;
-    width: auto; 
+    width: 50%;
     border: 0;
 }
-
-.choose-sort select option{
-    font-family: var(--font);
-    font-size: 24px;
-    font-weight: 700;
-    background-color: #CEE7E6;
+.search-bar .search-keywords{
+    display: flex;
+    width: 66%;
+    height:auto;
+    align-items: center;
+    background-color: #255783;
+    padding: 10px;
+    border-radius: 20px;
+}
+.search-bar .search-keywords input{
+    margin: 0;
+    height: auto;
+    padding: 10px;
+}
+.search-bar .search-keywords i{
+    font-size: 30px;
+    color: #ffffff;
+}
+.search-bar .search-keywords input{
+    background-color: transparent;
     border: 0;
-    color: orange;
 }

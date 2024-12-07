@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Limelight&family=Qwitcher+Grypen:wght@400;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root{
+    --font:"Be Vietnam Pro", sans-serif;
+    --font1:"Limelight", sans-serif;
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+  }
+  
+  body {
+    margin: 0;
+    font-family: "Be Vietnam Pro", sans-serif;
+    line-height: 1.4;
+    background-color: #FDFDFD;
+    padding: 0;
+  }
+  a {
+    text-decoration: none;
+  }
+
+  .payment-page .payment-page-content-header{
+    width: 100%;
+    font-family: var(--font);
+    font-size: 48px;
+    font-weight: 700;
+    color: #255783;
+    padding: 10px;
+
+  }
+  .details{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+  }
+  .bid{
+    display: flex;
+    gap: 10px;
+    text-align: center;
+    align-items: center;
+    border-bottom: 1px solid #BBBBBB;
+  }
+.details-bid{
+    font-size: 20px;
+    color: #255783;
+}
+.details-content{
+  color: #E5A13D;
+  font-size: 24px;
+  font-family: 700;
+  font-family: var(--font);
+}
+.tour-card{
+  padding: 10px;
+}
+.total-payment{
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.transfer-to h2{
+  font-family: var(--font);
+  font-size: 32px;
+  font-weight: 700;
+  color: #002A48;
+}
+.operator-details{
+  border: 1px solid #BBBBBB;
+  margin-left: 10px;
+  margin-right: 10px;
+  display: flex;
+}
+/* Container for the "Transfer to" section */
+.transfer-to {
+  background-color: #f9f9f9;  /* Light gray background for the section */
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.transfer-to h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+/* Styling the operator details section */
+.operator-details {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+/* Left side of operator details (Bank info) */
+.operator-details div {
+  flex: 1;
+
+}
+
+.operator-details p {
+  margin: 5px 0;
+  font-size: 1rem;
+  color: #555;
+}
+
+.operator-details strong {
+  font-weight: bold;
+}
+
+/* Right side for the bank logo image */
+.bank-image-container {
+  width: auto;
+  height: auto;
+  display: flex;
+  justify-content: right;
+}
+
+.bank-image {
+  max-width: 50%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for the image */
+}
+
+/* Styling for the "Upload money transfer form" section */
+.upload-section {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.upload-section h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+/* The box to upload the file */
+.upload-box {
+  width: 100%;
+  height: 200px;
+  border: 2px dashed #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 8px;
+  background-color: #fff;
+  transition: all 0.3s ease;
+}
+
+/* Hover effect for the upload box */
+.upload-box:hover {
+  background-color: #f0f0f0;
+  border-color: #888;
+}
+
+/* The uploaded image preview */
+.uploaded-image {
+  max-width: 50%;
+  max-height: 50%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Text when no image is uploaded */
+.upload-box p {
+  font-size: 1.1rem;
+  color: #888;
+  text-align: center;
+}
+.payment-page-btn {
+width: 100%;
+display: flex;
+justify-content: right;
+padding: 10px;
+}
+.payment-page-btn button{
+  background-color: #E5A13D;
+  border-radius: 57px;
+  padding: 12px 28px 12px 28px ;
+}

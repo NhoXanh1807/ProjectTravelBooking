@@ -22,9 +22,7 @@ const BookingHeader = ({ handleClick }) => {
                 </div>
             </header>
 
-            <div className="section-1-content">
-                Your Booked Tours
-            </div>
+
         </section>
     );
 };

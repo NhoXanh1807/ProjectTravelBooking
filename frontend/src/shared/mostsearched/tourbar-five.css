@@ -20,7 +20,7 @@ body {
 a {
     text-decoration: none;
 }
-.tour-barthree{
+.tour-barfive{
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -30,7 +30,7 @@ a {
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
     background-color: #ffffff;
 }
-.tour-barthree .tour-barthree-header{
+.tour-barfive .tour-barfive-header{
     display: flex;
     width: 100%;
     justify-content: space-between;
@@ -40,12 +40,12 @@ a {
     font-family: var(--font);
     color: #00171F;
 }
-.tour-barthree .tour-barthree-header .tour-barthree-headerName{
+.tour-barfive .tour-barfive-header .tour-barfive-headerName{
     display: flex;
     gap: 10px;
     align-items: center;
 }
-.tour-barthree .tour-barthree-header .tour-barthree-headerName  input[type="radio"] {
+.tour-barfive .tour-barfive-header .tour-barfive-headerName  input[type="radio"] {
     appearance: none; /* Remove default styling */
     width: auto; /* Set the size of the circle */
     height: auto; /* Set the size of the circle */
@@ -59,12 +59,12 @@ a {
 }
 
 
-.tour-barthree .tour-barthree-header .tour-barthree-headerName input[type="radio"]:checked {
+.tour-barfive .tour-barfive-header .tour-barfive-headerName input[type="radio"]:checked {
         background-color: #000; /* Fill the circle with color when selected */
         border-color: #000; /* Set border color to match */
     }
 
-.tour-barthree .tour-barthree-header .tour-barthree-headerName input[type="radio"]:checked::after {
+.tour-barfive .tour-barfive-header .tour-barfive-headerName input[type="radio"]:checked::after {
     position: absolute;
     top: 4px; /* Position the inner circle */
     left: 4px; /* Position the inner circle */
@@ -74,24 +74,24 @@ a {
     background-color: #000; /* Color for the inner circle */
 }
 
-.tour-barthree .tour-barthree-content .tour-barthree-contentTime{
+.tour-barfive .tour-barfive-content .tour-barfive-contentTime{
     display: flex;
     justify-content: space-between;
     color: #667479;
     font-size: 20px;
     font-weight: 500;
 }
-.tour-barthree .tour-barthree-content .tour-barthree-contentTime .tour-barthree-contentStartDate{
+.tour-barfive .tour-barfive-content .tour-barfive-contentTime .tour-barfive-contentStartDate{
     width: 50%;
     display: flex;
     gap: 10px;
 }
-.tour-barthree .tour-barthree-content .tour-barthree-contentTime .tour-barthree-contentEndDate{
+.tour-barfive .tour-barfive-content .tour-barfive-contentTime .tour-barfive-contentEndDate{
     width: 50%;
     display: flex;
     gap: 10px;
 }
-.tour-barthree .tour-barthree-content .tour-barthree-contentLocation{
+.tour-barfive .tour-barfive-content .tour-barfive-contentLocation{
     color: #667479;
     font-size: 20px;
     font-weight: 500;
@@ -99,20 +99,20 @@ a {
     gap: 10px;
 }
 
-.tour-barthree .tour-barthree-content .tour-barthree-contentLanguages{
+.tour-barfive .tour-barfive-content .tour-barfive-contentLanguages{
     color: #667479;
     font-size: 20px;
     font-weight: 500;
     display: flex;
     gap: 10px
 }
-.tour-barthree .tour-barthree-foot{
+.tour-barfive .tour-barfive-foot{
     display: flex;
     justify-content: space-between;
     padding: 10px;
     
 }
-.tour-barthree .tour-barthree-foot .tour-barthree-footStatus{
+.tour-barfive .tour-barfive-foot .tour-barfive-footStatus{
     display: flex;
     align-items: center;
     font-family: var(--font);

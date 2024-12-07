@@ -1,21 +1,24 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "./booking.css";
 import Tourbarthree from "../../shared/mostsearched/tourbar_three";
 import tourData from "../../assets/data/tour";
 import TravelerHeader from "../../Components/Headers/TravelerHeader/TravelerHeader";
 import Tourbarfourth from "../../shared/mostsearched/tourbar_four";
 import bookingData from "../../assets/data/booking";
-import BookingHeader from "../../Components/Headers/TravelerHeader/BookingHeader"
-import Footer from "../../Components/Footers/Footer"
+import BookingHeader from "../../Components/Headers/TravelerHeader/BookingHeader";
+import Footer from "../../Components/Footers/Footer";
+
 function TourBooking({ isLoggedIn, setIsLoggedIn }) {
-    const [selectedTourId, setSelectedTourId] = useState(null); // Track the selected tour's ID
+    const [selectedTour, setSelectedTour] = useState(null); // Track the selected tour
+    const [selectedBooking, setSelectedBooking] = useState(null); // Track the selected booking
     const [totalPrice, setTotalPrice] = useState(0); // Track the total price
     const [activeSection, setActiveSection] = useState("unpaid"); // Track the active section ("unpaid" or "paid")
     const navigate = useNavigate();
 
-    const handleItemClick = (tour) => {
-        setSelectedTourId(tour._id); // Update the selected tour's ID
+    const handleItemClick = (tour, booking) => {
+        setSelectedTour(tour); // Update the selected tour
+        setSelectedBooking(booking); // Update the selected booking
         setTotalPrice(tour.Price); // Update the total price when a tour is selected
     };
 
@@ -32,6 +35,7 @@ function TourBooking({ isLoggedIn, setIsLoggedIn }) {
         <div className="tourBooking">
             <BookingHeader isLoggedIn={isLoggedIn} handleClick={handleLogout} />
             <div className="tourBookingHeader">
+                <div className="tourBookingHeader-name">Your Booked Tours</div>
                 <div className="tourBookingHeader-btns">
                     <button
                         className={`unpaid ${activeSection === "unpaid" ? "active" : ""}`}
@@ -62,8 +66,8 @@ function TourBooking({ isLoggedIn, setIsLoggedIn }) {
                                         <Tourbarthree
                                             item={tour}
                                             booking={booking}
-                                            isSelected={selectedTourId === tour._id} // Pass selection status
-                                            onClick={() => handleItemClick(tour)} // Handle item selection
+                                            isSelected={selectedTour === tour} // Pass selection status
+                                            onClick={() => handleItemClick(tour, booking)} // Handle item selection
                                         />
                                     </div>
                                 );
@@ -74,8 +78,8 @@ function TourBooking({ isLoggedIn, setIsLoggedIn }) {
                                     <Tourbarfourth
                                         item={tour}
                                         booking={booking}
-                                        isSelected={selectedTourId === tour._id} // Pass selection status
-                                        onClick={() => handleItemClick(tour)} // Handle item selection
+                                        isSelected={selectedTour === tour} // Pass selection status
+                                        onClick={() => handleItemClick(tour, booking)} // Handle item selection
                                     />
                                 </div>
                             );
@@ -95,8 +99,8 @@ function TourBooking({ isLoggedIn, setIsLoggedIn }) {
                                     <Tourbarfourth
                                         item={tour}
                                         booking={booking}
-                                        isSelected={selectedTourId === tour._id} // Pass selection status
-                                        onClick={() => handleItemClick(tour)} // Handle item selection
+                                        isSelected={selectedTour === tour} // Pass selection status
+                                        onClick={() => handleItemClick(tour, booking)} // Handle item selection
                                     />
                                 </div>
                             );
@@ -105,17 +109,23 @@ function TourBooking({ isLoggedIn, setIsLoggedIn }) {
             )}
 
             <div className="tourBookingHeader-foot">
-                <div className="tourBookingHeader-foot-content">
-                    TOTAL PAYMENT:
-                </div>
+                <div className="tourBookingHeader-foot-content">TOTAL PAYMENT:</div>
                 <div className="tourBookingHeader-foot-price">
                     {totalPrice > 0 ? `${new Intl.NumberFormat('vi-VN').format(totalPrice)} VND` : "0"}
                 </div>
                 <div className="tourBookingHeader-foot-btn">
-                    <button>PAY</button>
+                    <Link
+                        to="/payment"
+                        state={{
+                            booking: selectedBooking,
+                            tour: selectedTour,
+                        }}
+                    >
+                        <button disabled={!selectedTour || !selectedBooking}>PAY</button>
+                    </Link>
                 </div>
             </div>
-            <Footer/>
+            <Footer />
         </div>
     );
 }

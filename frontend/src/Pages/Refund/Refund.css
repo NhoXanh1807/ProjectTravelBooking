@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Limelight&family=Qwitcher+Grypen:wght@400;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root{
+    --font:"Be Vietnam Pro", sans-serif;
+    --font1:"Limelight", sans-serif;
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+  }
+  
+  body {
+    margin: 0;
+    font-family: "Be Vietnam Pro", sans-serif;
+    line-height: 1.4;
+    background-color: #FDFDFD;
+    padding: 0;
+  }
+  a {
+    text-decoration: none;
+  }
+  .refund-page .refund-page-content .refund-page-content-header{
+    width: 100%;
+    font-family: var(--font);
+    font-size: 48px;
+    font-weight: 700;
+    color: #255783;
+    padding: 10px;
+  }
+  .refund-page .refund-page-content{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: right;
+  }
+   .details{
+    color: #E5A13D;
+    font-family: var(--font);
+    font-size: 24px;
+    font-weight: 700;
+    padding: 10px;
+  }
+  .refund-page .refund-page-content .bid{
+    display: flex;
+    gap: 50px;
+    text-align: center;
+    align-items: center;
+    border-bottom: 1px solid #BBBBBB;
+    padding: 10px;
+  }
+  .refund-page .refund-page-content .details-bid{
+    font-size: 20px;
+    font-weight: 700;
+    font-family: var(--font);
+    color: #002A48;
+  }
+  .refund-page .refund-page-content .pid{
+    display: flex;
+    gap: 50px;
+    text-align: center;
+    align-items: center;
+    border-bottom: 1px solid #BBBBBB;
+    padding: 10px;
+  }
+  .refund-page .refund-page-content .details-pid{
+    font-size: 20px;
+    font-weight: 700;
+    font-family: var(--font);
+    color: #002A48;
+  }
+  .total-payment{
+    display: flex;
+    gap: 10px;
+    justify-content: right;
+    border: 1px solid #BBBBBB;
+    padding: 10px;
+  }
+  .total-payment-content{
+    width: auto;
+    display: flex;
+    
+    padding: 10px;
+    color: #E5A13D;
+    font-size: 24px;
+    font-weight: 700;
+    font-family: var(--font);
+  }
+  .total-payment-price{
+    color: #002A48;
+    font-size: 24px;
+    font-weight: 700;
+    font-family: var(--font);
+    width: auto;
+    display: flex;
+    justify-content: right;
+    padding: 10px;
+  }
+  .refund-page-content{
+    padding: 10px;
+  }
+  .transfer-section h2{
+    font-size: 32px;
+    font-family: var(--font);
+    font-weight: 700;
+    color: #002A48;
+    padding: 10px;
+  }
+  .transfer-section{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border: 1px solid #BBBBBB;
+    padding: 20px;
+  }
+  .form-group {
+    font-size: 24px;
+    font-weight: 700;
+    font-family: var(--font);
+    color: #E5A13D;
+    display: flex;
+    height: auto;
+    gap: 20px;
+  }
+  .form-group label{
+    width: 20%;
+  }
+  .form-group input{
+    background-color: transparent;
+    border: 2px solid #003459;
+  }
+  .refund-page-content .refund-page-content-btn{
+    display: flex;
+    justify-content: right;
+    padding: 10px;
+
+  }
+.refund-page-content .refund-page-content-btn button{
+  width: auto;
+  height: auto;
+  background-color: #E5A13D;
+  border-radius: 57px;
+  padding: 12px 28px 12px 28px;
+}

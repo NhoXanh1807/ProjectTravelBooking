@@ -1,26 +1,38 @@
 import React, { useState } from 'react';
-//import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './reports-searched-bar.css';
-function ReportsSearchBar(){
-    const [sortType, setSortType] = useState("newest");
+function SearchBar() {
+    const [location, setLocation] = useState("Newest");
+    const [fromDate, setFromDate] = useState("");
+    const [toDate, setToDate] = useState("");
     return (
-        <div className="reports-search-bar">
-            <input type="text"/>
-
-            <div className="choose-sort">
-                Sort by:
-                <select
-                    value={sortType} 
-                    onChange={(e) => setSortType(e.target.value)}
-                >
-                    <option value="newest">Newest</option>
-                    <option value="oldest">Oldest</option>
-                </select>
+        <div className="search-bar">
+            <div className="search-keywords">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" name="" id="" />
             </div>
+            <div className="select-group">
+                <div className="search-bar__inner-right">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>Sort by:</span>
+                </div>
+                <div className="custom-select-container">
+                    <select
+                        value={location}
+                        onChange={(e) => setLocation(e.target.value)}
+                        aria-label="Select location"
+                    >
+                        <option value="Newest">Newest</option>
+                        <option value="Oldest">Oldest</option>
+                    </select>
+                </div>
+            </div>
+
+
 
             <button aria-label="Search for trips">Search</button>
         </div>
     );
 }
 
-export default ReportsSearchBar;
+export default SearchBar;

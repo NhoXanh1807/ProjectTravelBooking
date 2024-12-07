@@ -27,6 +27,16 @@ a {
     font-weight: 700;
     color: #255783;
 }
+.tourBooking .tourBookingHeader .tourBookingHeader-name{
+    font-size: 48px;
+    font-family: var(--font);
+    font-weight: 700;
+    color: #255783;
+    background-color: #ffffff;
+    padding: 10px;
+    height: 20%;
+    align-items: center;
+  }
 .tourBooking .tourBookingHeader-btns{
     width: 100%;
     display: flex;
@@ -46,6 +56,7 @@ a {
     border-left: 1px solid #E0E0E0;
     border-right: 1px solid #E0E0E0;
     border-top-left-radius: 20px;
+
 }
 
 /* Styling for the "paid" button when active */
@@ -79,6 +90,9 @@ a {
     border-left: 1px solid #E0E0E0;
     border-right: 1px solid #E0E0E0;
     border-bottom: 1px solid #E0E0E0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .tourBooking .tourBookingHeader-content-paid{
@@ -86,6 +100,9 @@ a {
     border-left: 1px solid #E0E0E0;
     border-right: 1px solid #E0E0E0;
     border-bottom: 1px solid #E0E0E0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .tourBooking .tourBookingHeader-foot{
