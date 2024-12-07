@@ -17,7 +17,7 @@ router.post('/', verifyUser, createBooking);
 router.get('/', verifyAdmin, getAllBookings);
 
 // Lấy danh sách booking của một người dùng (yêu cầu người dùng đăng nhập)
-router.get('/user/:travelerId', verifyUser, getUserBookings);
+router.get('/user/:TravelerId', verifyUser, getUserBookings);
 
 // Hủy booking (yêu cầu người dùng đăng nhập)
 router.delete('/:bookingId', verifyUser, cancelBooking);

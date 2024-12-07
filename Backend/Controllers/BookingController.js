@@ -60,8 +60,7 @@ export const getUserBookings = async (req, res) => {
     const { TravelerID } = req.params;
 
     const bookings = await Booking.find({ TravelerID })
-      .populate('TourID', 'name location') // Populate thêm thông tin tour
-      .exec();
+      
 
     res.status(200).json({
       success: true,
