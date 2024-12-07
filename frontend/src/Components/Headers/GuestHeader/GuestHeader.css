@@ -38,7 +38,9 @@
     align-items: center;
     padding: 10px;
 }
-
+.GuestHeader .header-left a{
+  text-decoration: none;
+}
 .GuestHeader .header-left .logo {
     width: auto; /* Allow the logo to resize */
     text-align: center;

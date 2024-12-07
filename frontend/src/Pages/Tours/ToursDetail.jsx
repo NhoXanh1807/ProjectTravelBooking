@@ -4,7 +4,7 @@ import './ToursDetail.css';
 const ToursDetail = ({ tour, open, onClose }) => {
     if (!tour) return null;
     if (!open) return null;
-
+    console.log(tour)
     return (
         <div className="modal">
             <div className="overlay" onClick={onClose}></div>

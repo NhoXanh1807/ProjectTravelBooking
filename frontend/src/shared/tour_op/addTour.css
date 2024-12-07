@@ -1,0 +1,307 @@
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Limelight&family=Qwitcher+Grypen:wght@400;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root {
+    --font: "Be Vietnam Pro", sans-serif;
+    --font1: "Limelight", sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    margin: 0;
+    font-family: "Be Vietnam Pro", sans-serif;
+    line-height: 1.4;
+    background-color: #FDFDFD;
+}
+
+a {
+    text-decoration: none;
+}
+
+.addTour{
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 20px;
+    border: 1px solid #667479;
+}
+.addTour .addTour-content .addTour-name{
+    display: flex;
+    gap: 20px;
+}
+.addTour .addTour-content .addTour-name label{
+    width: 15%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    font-family: var(--font);
+    font-size: 24px;
+    font-weight: 700;
+    
+}
+.addTour .addTour-content .addTour-name input{
+    text-align: left;
+    border: 2px solid #003459;
+    background-color: transparent;
+    color: #667479;
+    font-size: 24px;
+    font-weight: 500;
+}
+.addTour .addTour-content .addTour-price{
+    display: flex;
+    gap: 20px;
+}
+.addTour .addTour-content .addTour-price label{
+    width: 15%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    font-family: var(--font);
+    font-size: 24px;
+    font-weight: 700;
+}
+.addTour .addTour-content .addTour-price input{
+    text-align: left;
+    border: 2px solid #003459;
+    background-color: transparent;
+    color: #667479;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+
+.addTour .addTour-content .addTour-fromDate{
+    display: flex;
+    gap: 20px;
+}
+.addTour .addTour-content .addTour-fromDate label{
+    width: 15%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    font-family: var(--font);
+    font-size: 24px;
+    font-weight: 700;
+}
+.addTour .addTour-content .addTour-fromDate input{
+    text-align: left;
+    border: 2px solid #003459;
+    background-color: transparent;
+    color: #667479;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.addTour .addTour-content .addTour-toDate{
+    display: flex;
+    gap: 20px;
+}
+.addTour .addTour-content .addTour-toDate label{
+    width: 15%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    font-family: var(--font);
+    font-size: 24px;
+    font-weight: 700;
+}
+.addTour .addTour-content .addTour-toDate input{
+    text-align: left;
+    border: 2px solid #003459;
+    background-color: transparent;
+    color: #667479;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+
+.addTour .addTour-content .addTour-locations{
+    display: flex;
+    gap: 20px;
+}
+.addTour .addTour-content .addTour-locations label{
+    width: 15%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    font-family: var(--font);
+    font-size: 24px;
+    font-weight: 700;
+}
+.addTour .addTour-content .addTour-locations input{
+    text-align: left;
+    border: 2px solid #003459;
+    background-color: transparent;
+    color: #667479;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+
+.addTour .addTour-content .addTour-languages{
+    display: flex;
+    gap: 20px;
+}
+.addTour .addTour-content .addTour-languages label{
+    width: 15%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    font-family: var(--font);
+    font-size: 24px;
+    font-weight: 700;
+}
+.addTour .addTour-content .addTour-languages input{
+    text-align: left;
+    border: 2px solid #003459;
+    background-color: transparent;
+    color: #667479;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.addTour .addTour-content .addTour-cancelPolicy{
+    display: flex;
+    gap: 20px;
+}
+.addTour .addTour-content .addTour-cancelPolicy label{
+    width: 15%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    font-family: var(--font);
+    font-size: 24px;
+    font-weight: 700;
+}
+.addTour .addTour-content .addTour-cancelPolicy textarea{
+    width: 100%;
+    text-align: left;
+    border: 2px solid #003459;
+    background-color: transparent;
+    color: #667479;
+    font-size: 24px;
+    font-weight: 500;
+    border-radius: 10px;
+}
+.addTour .addTour-content .addTour-desc{
+    display: flex;
+    gap: 20px;
+}
+.addTour .addTour-content .addTour-desc label{
+    width: 15%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    font-family: var(--font);
+    font-size: 24px;
+    font-weight: 700;
+}
+.addTour .addTour-content .addTour-desc textarea{
+    width: 100%;
+    text-align: left;
+    border: 2px solid #003459;
+    background-color: transparent;
+    color: #667479;
+    font-size: 24px;
+    font-weight: 500;
+    border-radius: 10px;
+}
+
+.addTour .addTour-content .addTour-type{
+    display: flex;
+    gap: 20px;
+}
+.addTour .addTour-content .addTour-type label{
+    width: 15%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    font-family: var(--font);
+    font-size: 24px;
+    font-weight: 700;
+}
+.addTour .addTour-content .addTour-type input{
+    text-align: left;
+    border: 2px solid #003459;
+    background-color: transparent;
+    color: #667479;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+
+
+.addTour .addTour-content .addTour-capacity{
+    display: flex;
+    gap: 20px;
+}
+.addTour .addTour-content .addTour-capacity label{
+    width: 15%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    font-family: var(--font);
+    font-size: 24px;
+    font-weight: 700;
+}
+.addTour .addTour-content .addTour-capacity input{
+    text-align: left;
+    border: 2px solid #003459;
+    background-color: transparent;
+    color: #667479;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.addTour .addTour-content .addTour-status{
+    display: flex;
+    gap: 20px;
+}
+.addTour .addTour-content .addTour-status label{
+    width: 15%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    font-family: var(--font);
+    font-size: 24px;
+    font-weight: 700;
+}
+.addTour .addTour-content .addTour-status select{
+    text-align: left;
+    border: 2px solid #003459;
+    background-color: transparent;
+    color: #667479;
+    font-size: 24px;
+    font-weight: 500;
+    border-radius: 10px;
+}
+.addTour .addTour-content .form-conclusion{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-top: 1px solid #667479;
+}
+.addTour .addTour-content .form-conclusion .form-conclusion__content{
+    font-family: var(--font);
+    font-weight: 700;
+    font-size: 24px;
+}
+.addTour .addTour-content .form-conclusion .form-conclusion__btns{
+    display: flex;
+    gap: 10px;
+}
+
+.addTour .addTour-content .form-conclusion .form-conclusion__btns .addTour-save{
+    width: auto;
+    padding: 12px 28px 12px 28px ;
+    border-radius: 57px;
+    background-color: #1488DB;
+}
+.addTour .addTour-content .form-conclusion .form-conclusion__btns .addTour-cancel{
+    width: auto;
+    padding: 12px 28px 12px 28px ;
+    border-radius: 57px;
+    background-color: #E9456F;
+}

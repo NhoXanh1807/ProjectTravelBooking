@@ -32,7 +32,7 @@
   .login-form h1 {
     font-size: 2rem;
     margin-bottom: 20px;
-    color: #003366; /* Dark blue */
+    /* color: #003366;  */
   }
   
   .input-group {

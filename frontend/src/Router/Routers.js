@@ -12,6 +12,7 @@ import TourOperator from "../Pages/TourOperator/TourOperator";
 import OperatorReports from "../Pages/TourOperator/OperatorReports";
 import ViewBooking from "../shared/ViewBooking/ViewBooking";
 import ViewBookingRefund from "../shared/ViewBooking/ViewBookingRefund";
+import TourBooking from "../Pages/booking/booking";
 
 const Routers = ({ isLoggedIn, setIsLoggedIn }) => {
     return (
@@ -27,7 +28,7 @@ const Routers = ({ isLoggedIn, setIsLoggedIn }) => {
             <Route path="/tour/search" element={<SearchResult />} />
             <Route path="/tour-operator" element={<TourOperator />} />
             <Route path="/reports" element={<OperatorReports />} />
-            <Route path="/booking" element={<ViewBooking />} />
+            <Route path="/booking" element={<TourBooking isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />} />
             <Route path="/booking-refund" element={<ViewBookingRefund />} />
         </Routes>
     );

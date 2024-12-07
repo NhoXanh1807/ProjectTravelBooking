@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Limelight&family=Qwitcher+Grypen:wght@400;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root {
+    --font: "Be Vietnam Pro", sans-serif;
+    --font1: "Limelight", sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    margin: 0;
+    font-family: "Be Vietnam Pro", sans-serif;
+    line-height: 1.4;
+    background-color: #FDFDFD;
+}
+
+a {
+    text-decoration: none;
+}
+.tour-barthree{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border: 1px solid #667479;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+    background-color: #ffffff;
+}
+.tour-barthree .tour-barthree-header{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 10px;
+    font-size: 24px;
+    font-weight: 700;
+    font-family: var(--font);
+    color: #00171F;
+}
+.tour-barthree .tour-barthree-header .tour-barthree-headerName{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.tour-barthree .tour-barthree-header .tour-barthree-headerName  input[type="radio"] {
+    appearance: none; /* Remove default styling */
+    width: 5px; /* Set the size of the circle */
+    height: 5px; /* Set the size of the circle */
+    border-radius: 50%; /* Make it round */
+    border: 2px solid #000; /* Set the border color */
+    outline: none; /* Remove outline */
+    cursor: pointer; /* Change cursor to pointer */
+    position: relative; /* For positioning the inner circle */
+    background-color: white; /* Set background color */
+}
+
+
+.tour-barthree .tour-barthree-header .tour-barthree-headerName input[type="radio"]:checked {
+        background-color: #000; /* Fill the circle with color when selected */
+        border-color: #000; /* Set border color to match */
+    }
+
+.tour-barthree .tour-barthree-header .tour-barthree-headerName input[type="radio"]:checked::after {
+    position: absolute;
+    top: 4px; /* Position the inner circle */
+    left: 4px; /* Position the inner circle */
+    width: 8px; /* Size of the inner circle */
+    height: 8px; /* Size of the inner circle */
+    border-radius: 50%; /* Make the inner circle round */
+    background-color: #000; /* Color for the inner circle */
+}
+
+.tour-barthree .tour-barthree-content .tour-barthree-contentTime{
+    display: flex;
+    justify-content: space-between;
+    color: #667479;
+    font-size: 20px;
+    font-weight: 500;
+}
+.tour-barthree .tour-barthree-content .tour-barthree-contentTime .tour-barthree-contentStartDate{
+    width: 50%;
+    display: flex;
+    gap: 10px;
+}
+.tour-barthree .tour-barthree-content .tour-barthree-contentTime .tour-barthree-contentEndDate{
+    width: 50%;
+    display: flex;
+    gap: 10px;
+}
+.tour-barthree .tour-barthree-content .tour-barthree-contentLocation{
+    color: #667479;
+    font-size: 20px;
+    font-weight: 500;
+    display: flex;
+    gap: 10px;
+}
+
+.tour-barthree .tour-barthree-content .tour-barthree-contentLanguages{
+    color: #667479;
+    font-size: 20px;
+    font-weight: 500;
+    display: flex;
+    gap: 10px
+}
+.tour-barthree .tour-barthree-foot{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    
+}
+.tour-barthree .tour-barthree-foot .tour-barthree-footStatus{
+    display: flex;
+    align-items: center;
+    font-family: var(--font);
+    font-size: 24px;
+    font-weight: 700;
+    color: #E5A13D;
+}

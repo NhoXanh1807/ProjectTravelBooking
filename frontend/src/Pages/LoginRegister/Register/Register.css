@@ -27,15 +27,15 @@
   background-color: rgba(255, 255, 255, 0.5);
   padding: 40px;
   border-radius: 20px;
-  height: 575px;
-  width: 676px;
+  height: auto;
+  width: auto;
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
   text-align: center;
 }
 
 /* Title */
 .auth-box h1 {
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   font-size: 32px;
   color: #333;
 }
@@ -44,9 +44,11 @@
 form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 5px;
 }
-
+form .gender-group input{
+    font-size: small;
+}
 .form-row {
   display: flex;
   gap: 15px;
@@ -54,11 +56,12 @@ form {
 
 input {
   background-color: rgba(255, 255, 255, 0.5);
-  padding: 10px 15px;
+  padding: 5px 10px;
   font-size: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
   width: 100%;
+  height: auto;
   box-sizing: border-box;
 }
 
@@ -76,8 +79,8 @@ input {
 
 .gender-group input[type='radio'] {
   appearance: none;
-  width: 18px;
-  height: 18px;
+  width: 1px;
+  height: 1px;
   margin-right: 5px;
   border: 2px solid #333;
   border-radius: 0;

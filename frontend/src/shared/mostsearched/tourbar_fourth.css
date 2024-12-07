@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Limelight&family=Qwitcher+Grypen:wght@400;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root {
+    --font: "Be Vietnam Pro", sans-serif;
+    --font1: "Limelight", sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    margin: 0;
+    font-family: "Be Vietnam Pro", sans-serif;
+    line-height: 1.4;
+    background-color: #FDFDFD;
+}
+
+a {
+    text-decoration: none;
+}
+.tour-barfourth{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border: 1px solid #667479;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+    background-color: #ffffff;
+}
+.tour-barfourth .tour-barfourth-header{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 10px;
+    font-size: 24px;
+    font-weight: 700;
+    font-family: var(--font);
+    color: #00171F;
+}
+.tour-barfourth .tour-barfourth-header .tour-barfourth-headerName{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.tour-barfourth .tour-barfourth-content .tour-barfourth-contentTime{
+    display: flex;
+    justify-content: space-between;
+    color: #667479;
+    font-size: 20px;
+    font-weight: 500;
+}
+.tour-barfourth .tour-barfourth-content .tour-barfourth-contentTime .tour-barfourth-contentStartDate{
+    width: 50%;
+    display: flex;
+    gap: 10px;
+}
+.tour-barfourth .tour-barfourth-content .tour-barfourth-contentTime .tour-barfourth-contentEndDate{
+    width: 50%;
+    display: flex;
+    gap: 10px;
+}
+.tour-barfourth .tour-barfourth-content .tour-barfourth-contentLocation{
+    color: #667479;
+    font-size: 20px;
+    font-weight: 500;
+    display: flex;
+    gap: 10px;
+}
+
+.tour-barfourth .tour-barfourth-content .tour-barfourth-contentLanguages{
+    color: #667479;
+    font-size: 20px;
+    font-weight: 500;
+    display: flex;
+    gap: 10px
+}
+.tour-barfourth .tour-barfourth-foot{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    
+}
+.tour-barfourth .tour-barfourth-foot .tour-barfourth-footStatus{
+    display: flex;
+    align-items: center;
+    font-family: var(--font);
+    font-size: 24px;
+    font-weight: 700;
+    color: #E5A13D;
+}
+.tour-barfourth .tour-barfourth-foot .Unable-pay{
+    display: flex;
+    font-style: italic;
+    align-items: center;
+    font-family: var(--font);
+    font-size: 24px;
+    font-weight: 500;
+    color: #F00021;
+}
+
+.tour-barfourth .tour-barfourth-foot .Refund{
+    display: flex;
+    font-style: italic;
+    align-items: center;
+    font-family: var(--font);
+    font-size: 24px;
+    font-weight: 500;
+    color: #009146;
+    background-color: transparent;
+    width: auto;
+    height: auto;
+    border: 0;
+}
+.tour-barfourth .tour-barfourth-foot .Refund:hover{
+    background-color: transparent;
+}
+.tour-barfourth .tour-barfourth-foot .paid-btn {
+    display: flex;
+    font-style: italic;
+    align-items: center;
+    font-family: var(--font);
+    font-size: 24px;
+    font-weight: 500;
+    color: #009146;
+    width: auto;
+    height: auto;
+    gap: 10px;
+}
+.tour-barfourth .tour-barfourth-foot .paid-btn button{
+    width: auto;
+    height: auto;
+    background-color: #E5A13D;
+    border: 0;
+    padding: 12px 28px 12px 28px;
+    border-radius: 57px;
+}

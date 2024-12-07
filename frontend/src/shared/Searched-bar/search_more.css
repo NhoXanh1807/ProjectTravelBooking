@@ -45,7 +45,7 @@ a {
 } */
 .searchMore .searchMore-one .search-keywords{
     display: flex;
-    width: 80%;
+    width: 66%;
     height:auto;
     align-items: center;
     background-color: #255783;
@@ -54,6 +54,8 @@ a {
 }
 .searchMore .searchMore-one .search-keywords input{
     margin: 0;
+    height: auto;
+    padding: 10px;
 }
 .searchMore .searchMore-one .select-group-new{
     height: auto;

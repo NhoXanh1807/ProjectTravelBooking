@@ -4,7 +4,7 @@ const tourData = [
         _id: "6743df832432dba1b4c79140",
         imgUrl: image,
         TourName: "Discovery Vietnam",
-        TourStatus: "Available",
+        TourStatus: "Unavailable",
         AvailableSeats: 17,
         Description: "A 10-day tour exploring the beauty of Vietnam from North to South.",
         Price: 6900000,
@@ -45,7 +45,42 @@ const tourData = [
         _id: "674d8eca43b10ab835978059",
         imgUrl: image,
         TourName: "Exploring Vietnam's Wonders",
-        TourStatus: "Available",
+        TourStatus: "Unavailable",
+        AvailableSeats: 20,
+        Description: "A 7-day adventure exploring the natural and cultural wonders of Vietnam.",
+        Price: 15000000,
+        Duration: "7 days",
+        Capacity: 30,
+        Locations: [
+            "Hanoi",
+            "Halong Bay",
+            "Hue",
+            "Ho Chi Minh City"
+        ],
+        CancellationPolicy: "Full refund if canceled 7 days before the start date.",
+        Type: "Adventure",
+        LanguageOffers: [
+            "English",
+            "Vietnamese",
+            "French"
+        ],
+        StartDate: new Date("2024-12-15T00:00:00.000Z"),
+        EndDate: new Date("2024-12-22T00:00:00.000Z"),
+        TourOperatorObjectID: "674d8b0e00c89870e48ed591",
+        BookingObjectID: [
+            "674d8cd643b10ab835977feb"
+        ],
+        TravelerObjectID: [
+            "6748c45428c5d89f3d73082b"
+        ],
+        createdAt: new Date("2024-12-01T14:30:00.000Z"),
+        updatedAt: new Date("2024-12-01T14:30:00.000Z")
+    },
+    {
+        _id: "674d8eca43b10ab835978099",
+        imgUrl: image,
+        TourName: "Exploring Vietnam's Wonders",
+        TourStatus: "Sold out",
         AvailableSeats: 20,
         Description: "A 7-day adventure exploring the natural and cultural wonders of Vietnam.",
         Price: 15000000,

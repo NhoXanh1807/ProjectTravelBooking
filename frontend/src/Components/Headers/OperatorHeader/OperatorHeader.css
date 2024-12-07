@@ -1,30 +1,56 @@
-.OperatorHeader {
-    padding: 10px;
-    height: 80px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #CEE7E6;
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Limelight&family=Qwitcher+Grypen:wght@400;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root {
+    --font: "Be Vietnam Pro", sans-serif;
+    --font1: "Limelight", sans-serif;
 }
 
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
 
-.OperatorHeader .logo {
-    color: orange;
+body {
+    margin: 0;
+    font-family: "Be Vietnam Pro", sans-serif;
+    line-height: 1.4;
+    background-color: #FDFDFD;
+}
+
+a {
+    text-decoration: none;
+}
+.OperatorHeader{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+.OperatorHeader a{
+    text-decoration: none;
+}
+.OperatorHeader .header-left .logo{
+    width: auto; /* Allow the logo to resize */
+    text-align: center;
+    flex: 1 1 100%; /* Make the logo span the full width on small screens */
+    font-family: var(--font1);
+    font-size: 48px;
+    font-weight: 400;
+    color: #E5A13D;
 }
 
 .OperatorHeader .header-right {
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
     align-items: center;
-    gap: 50px;
+    gap: 20px;
     padding: 10px;
 }
-
 .OperatorHeader .header-right button {
-    padding: 5px;
-    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    padding: 5px 10px;
+    border-radius: 10px;
     text-decoration: none;
     background-color: orange;
     color: #5D4037;
@@ -33,10 +59,19 @@
     font-weight: 700;
 }
 
-.OperatorHeader .link {
+.OperatorHeader .header-right button i{
+    color: #ffffff;
+}
+.OperatorHeader .header-right .header-link {
     text-decoration: none;
-    font-family: 'Be Vietnam Pro', sans-serif;
-    font-size: 20px;
     color: #5D4037;
+    font-size: 24px;
+    font-family: var(--font);
+    font-weight: 700;
 }
 
+.button-logout{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }

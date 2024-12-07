@@ -29,6 +29,16 @@
     background-position: center; /* Centers the image */
     background-repeat: no-repeat;
   }
+  .section-1 .section-1-content{
+    font-size: 48px;
+    font-family: var(--font);
+    font-weight: 700;
+    color: #255783;
+    background-color: #ffffff;
+    padding: 10px;
+    height: 20%;
+    align-items: center;
+  }
 .TravelerHeader {
     display: flex;
     flex-direction: row;
@@ -38,15 +48,17 @@
     align-items: center;
     padding: 10px;
 }
-
+.TravelerHeader .header-left a{
+  text-decoration: none;
+}
 .TravelerHeader .header-left .logo {
-    width: auto; /* Allow the logo to resize */
-    text-align: center;
-    flex: 1 1 100%; /* Make the logo span the full width on small screens */
-    font-family: var(--font1);
-    font-size: 48px;
-    font-weight: 400;
-    color: #E5A13D;
+  width: auto; /* Allow the logo to resize */
+  text-align: center;
+  flex: 1 1 100%; /* Make the logo span the full width on small screens */
+  font-family: var(--font1);
+  font-size: 48px;
+  font-weight: 400;
+  color: #E5A13D;
 }
 
 .TravelerHeader .header-right {
