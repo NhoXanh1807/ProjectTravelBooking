@@ -5,21 +5,21 @@ import image from '../../assets/image/Rectangle 15.png'
 const data = [
     {
         id:1,
-        imgUrl: image,
+        imgUrl: 'https://hoctienganh247.vn/public/store/1074/Privacy%20Policy.jpg',
         tag: "NOTICE!",
         title: "Privacy Policy",
         desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit Porro, maiores? Repellat ducimus tenetur, fuga eligendi rem nam cum inventore quisquam hic dignissimos officiis temporibus perspiciatis laboriosam atque modi, quidem magni!",
     },
     {
         id:2,
-        imgUrl: image,
+        imgUrl: 'https://cdn4.avada.io/media/shopify/alsHn8L.jpg',
         tag: "NOTICE!",
         title: "Terms of Service",
         desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit Porro, maiores? Repellat ducimus tenetur, fuga eligendi rem nam cum inventore quisquam hic dignissimos officiis temporibus perspiciatis laboriosam atque modi, quidem magni!",
     },
     {
         id:3,
-        imgUrl: image,
+        imgUrl: 'https://dynamic.tourtravelworld.com/blog_images/how-to-secure-your-travel-agent-license-in-easy-steps-20240214050139.jpg',
         tag: "NOTICE!",
         title: "Terms of Conditions for Registering Your Tourism Business",
         desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit Porro, maiores? Repellat ducimus tenetur, fuga eligendi rem nam cum inventore quisquam hic dignissimos officiis temporibus perspiciatis laboriosam atque modi, quidem magni!",

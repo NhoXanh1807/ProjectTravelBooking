@@ -9,18 +9,7 @@ import { BASE_URL } from '../../utils/config';
 const ToursDetail = ({ isLoggedIn, setIsLoggedIn }) => {
     const { id } = useParams(); // Lấy id từ URL
     const navigate = useNavigate();
-    const imgUrl = [
-        "../../assets/image/hình tour/Africa Safari/hình 1.jpg",
-        "../../assets/image/hình tour/Europe Goreous/hình 2.jpg",
-        "../../assets/image/hình tour/Europe Goreous/hình 3.jpg",
-        "../../assets/image/hình tour/Europe Goreous/hình 4.jpg",
-        "../../assets/image/hình tour/Europe Goreous/hình 5.jpg",
-        "../../assets/image/hình tour/Europe Goreous/hình 6.jpg",
-        "../../assets/image/hình tour/Europe Goreous/hình 7.jpg",
-        "../../assets/image/hình tour/Europe Goreous/hình 8.jpg",
-        "../../assets/image/hình tour/Europe Goreous/hình 9.jpg"
-    ];
-    const [selectedImage, setSelectedImage] = useState(imgUrl[0]);
+    const [selectedImage, setSelectedImage] = useState(null);  // Initialize as null or a default image
     const [tour, setTour] = useState(null);  // State lưu dữ liệu tour
     const [loading, setLoading] = useState(true);  // State cho loading
     const [error, setError] = useState(null);  // State cho lỗi
@@ -29,13 +18,16 @@ const ToursDetail = ({ isLoggedIn, setIsLoggedIn }) => {
         // Gọi API để lấy dữ liệu tour
         const fetchTourData = async () => {
             try {
-                const response = await fetch(`${BASE_URL}/tours/${id}`);  // Đảm bảo dùng đúng template string
+                const response = await fetch(`${BASE_URL}/tours/${id}`);
                 if (!response.ok) {
                     throw new Error('Tour not found');
                 }
                 const data = await response.json();
-                console.log(data)
                 setTour(data);  // Lưu dữ liệu tour vào state
+                // Set the first image from the fetched data if available
+                if (data?.data?.imgUrl?.length > 0) {
+                    setSelectedImage(data.data.imgUrl[0]);
+                }
             } catch (error) {
                 setError(error.message);  // Xử lý lỗi nếu có
             } finally {
@@ -93,7 +85,7 @@ const ToursDetail = ({ isLoggedIn, setIsLoggedIn }) => {
                         <img src={selectedImage} alt={tour.data.TourName} />
                     </div>
                     <div className="tourdetail-image-slice-bar">
-                        {imgUrl.map((image, index) => (
+                        {tour.data.imgUrl.map((image, index) => (
                             <div
                                 key={index}
                                 className="tourdetail-image-thumbnail"
