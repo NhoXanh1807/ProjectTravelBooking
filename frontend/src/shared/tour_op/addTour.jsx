@@ -3,7 +3,7 @@ import { AuthContext } from "./../../context/AuthContext";
 import { BASE_URL } from "../../utils/config";
 import "./addTour.css"; // Tạo file CSS phù hợp
 
-function AddTour() {
+function AddTour({ onCancel }) {
   const [formData, setFormData] = useState({
     TourName: "",
     TourStatus: "Available",
@@ -30,6 +30,9 @@ function AddTour() {
       ...formData,
       [name]: value,
     });
+  };
+  const handleCancel = () => {
+    onCancel();  // Gọi hàm onCancel để ẩn form
   };
 
   const handleSubmit = async (e) => {
@@ -219,7 +222,11 @@ function AddTour() {
         </div>
         {error && <p className="error">{error}</p>}
         {success && <p className="success">Tour added successfully!</p>}
+        <div className="add-tour-btns">
         <button type="submit" className="btn-primary">Add Tour</button>
+        <button type="button" className="btn-cancel" onClick={handleCancel}>Cancel</button> {/* Thay type thành button */}
+        </div>
+
       </form>
     </div>
   );

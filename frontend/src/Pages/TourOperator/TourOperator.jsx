@@ -23,15 +23,15 @@ function TourOperator({ isLoggedIn, setIsLoggedIn }) {
 
     // Xử lý khi click vào nút "Add New Tour"
     const handleAddNewClick = () => {
-        setShowAddTour(true);    // Hiện AddTour
-        setShowModifyTour(false); // Ẩn ModifyTour nếu đang hiển thị
-        setSelectedTour(null);  // Đặt lại tour được chọn
-    };
+        setShowAddTour(true);
+        setShowModifyTour(false);
+        setSelectedTour(null);
+      };
 
     // Xử lý khi hủy AddTour
     const handleCancelAdd = () => {
-        setShowAddTour(false); // Ẩn AddTour
-    };
+        setShowAddTour(false); // Ẩn form AddTour khi Cancel
+      };
 
     // Xử lý khi hủy ModifyTour
     const handleCancelModify = () => {
