@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import './search_more.css'
 import { Link } from 'react-router-dom';
-function SearchMore() {
+import './SearchMoreTour.css'
+function SearchMoreTour() {
     const [location, setLocation] = useState("Hồ Chí Minh");
     const [fromDate, setFromDate] = useState("");
     const [toDate, setToDate] = useState("");
     const [fromPrice, setFromPrice] = useState("");
     const [toPrice, setToPrice] = useState("");
     return (
-        <div className="searchMore">
-            <div className="searchMore-one">
+        <div className="SearchMoreTour">
+            <div className="SearchMoreTour-one">
                 <div className="search-keywords">
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <input type="text" name="" id="" />
@@ -34,13 +34,9 @@ function SearchMore() {
                         </select>
                     </div>
                 </div>
-                <div className="link-btn">
-                    <Link to='/tour-result-traveler'>
-                    <button aria-label="Search-btn">Search</button>
-                    </Link>
-                </div>
+                <div className="link-btn"><Link to='/tour-result-operator'><button aria-label="Search-btn">Search</button></Link></div>
             </div>
-            <div className="searchMore-two">
+            <div className="SearchMoreTour-two">
                 <div className="choose-dates">
                 Date
                   <div className='choose-date-main'>
@@ -89,4 +85,4 @@ function SearchMore() {
         </div>
     );
 }
-export default SearchMore;
+export default SearchMoreTour;

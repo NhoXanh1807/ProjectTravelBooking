@@ -20,7 +20,7 @@ body {
 a {
     text-decoration: none;
 }
-.searchMore{
+.SearchMoreTour{
     height: auto;
     display: flex;
     flex-direction: column;
@@ -32,18 +32,18 @@ a {
     
 }
 
-.searchMore .searchMore-one{
+.SearchMoreTour .SearchMoreTour-one{
     display: flex;
     padding: 0px 50px 0px 50px;
     gap: 5px;
     height: 60%;
     align-items: center;
 }
-/* .searchMore .searchMore-one .bar{
+/* .SearchMoreTour .SearchMoreTour-one .bar{
     rotate: 90deg;
     color: #ffffff;
 } */
-.searchMore .searchMore-one .search-keywords{
+.SearchMoreTour .SearchMoreTour-one .search-keywords{
     display: flex;
     width: 66%;
     height:auto;
@@ -52,12 +52,24 @@ a {
     padding: 10px;
     border-radius: 20px;
 }
-.searchMore .searchMore-one .search-keywords input{
+.SearchMoreTour .SearchMoreTour-one .link-btn{
+    width: 10%;
+    text-decoration: none;
+}
+.SearchMoreTour .SearchMoreTour-one a{
+    text-decoration: none;
+}
+.SearchMoreTour .SearchMoreTour-one a button{
+    padding: 12px 28px 12px 28px ;
+    border-radius: 57px;
+    width: 100%;
+}
+.SearchMoreTour .SearchMoreTour-one .search-keywords input{
     margin: 0;
     height: auto;
     padding: 10px;
 }
-.searchMore .searchMore-one .select-group-new{
+.SearchMoreTour .SearchMoreTour-one .select-group-new{
     height: auto;
     background-color: #255783;
     padding: 16px;
@@ -65,36 +77,30 @@ a {
     display: flex;
     gap: 10px;
 }
-.searchMore .searchMore-one .search-keywords i{
+.SearchMoreTour .SearchMoreTour-one .search-keywords i{
     font-size: 30px;
     color: #ffffff;
 }
-.searchMore .searchMore-one .search-keywords input{
+.SearchMoreTour .SearchMoreTour-one .search-keywords input{
     background-color: transparent;
     border: 0;
 }
-.searchMore .searchMore-one .link-btn{
-width: 10%;
-}
-.searchMore .searchMore-one .link-btn a{
-    text-decoration: none;
-}
-.searchMore .searchMore-one .link-btn a button{
+.SearchMoreTour .SearchMoreTour-one button{
     height: 48px;
-    width: 100%;
+    width: 11%;
     display: flex;
     text-align: center;
     justify-content: center;
     padding: 13px 29px 13px 29px;
     border-radius: 10px;
 }
-.searchMore .searchMore-two{
+.SearchMoreTour .SearchMoreTour-two{
     display: flex;
     padding: 0px 50px 0px 50px;
     height: auto;
     gap: 10px;
 }
-.searchMore .searchMore-two .choose-dates{
+.SearchMoreTour .SearchMoreTour-two .choose-dates{
     display: block;
     text-align: left;
     font-size: 20px;
@@ -106,7 +112,7 @@ width: 10%;
     color: #ffffff;
     width: 50%;
 }
-.searchMore .searchMore-two .choose-dates .choose-date-main{
+.SearchMoreTour .SearchMoreTour-two .choose-dates .choose-date-main{
     display: flex;
     gap: 20px;
     align-items: center;
@@ -114,7 +120,7 @@ width: 10%;
     padding-left: 30px;
     border-top: 1px solid #ffffff;
 }
-.searchMore .searchMore-two .choose-dates .choose-date-main input{
+.SearchMoreTour .SearchMoreTour-two .choose-dates .choose-date-main input{
     background-color: transparent;
     border: 0;
     height: 60%;
@@ -124,7 +130,7 @@ width: 10%;
     font-family: var(--font);
     font-weight: 700;
 }
-.searchMore .searchMore-two .choose-pricerange{
+.SearchMoreTour .SearchMoreTour-two .choose-pricerange{
     display: block;
     text-align: left;
     font-size: 20px;
@@ -136,7 +142,7 @@ width: 10%;
     color: #ffffff;
     width: 50%;
 }
-.searchMore .searchMore-two .choose-pricerange .choose-pricerange-main{
+.SearchMoreTour .SearchMoreTour-two .choose-pricerange .choose-pricerange-main{
     display: flex;
     gap: 20px;
     align-items: center;
@@ -144,7 +150,7 @@ width: 10%;
     padding-left: 30px;
     border-top: 1px solid #ffffff;
 }
-.searchMore .searchMore-two .choose-pricerange .choose-pricerange-main input{
+.SearchMoreTour .SearchMoreTour-two .choose-pricerange .choose-pricerange-main input{
     background-color: transparent;
     border: 0;
     height: 60%;

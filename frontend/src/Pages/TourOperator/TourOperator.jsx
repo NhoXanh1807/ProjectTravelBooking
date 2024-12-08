@@ -1,5 +1,5 @@
 import OperatorHeader from '../../Components/Headers/OperatorHeader/OperatorHeader';
-import SearchMore from '../../shared/Searched-bar/search_more';
+import SearchMoreTour from '../../shared/Searched-bar/SearchMoreTour';
 import './TourOperator.css';
 import Tourbartwo from '../../shared/mostsearched/tourbar_two';
 import React, { useState } from 'react';
@@ -49,7 +49,7 @@ function TourOperator({ isLoggedIn, setIsLoggedIn }) {
                     </button>
                 </div>
                 <div className="touroperator-main__content">
-                    <SearchMore style={{ backgroundColor: 'transparent' }} />
+                    <SearchMoreTour style={{ backgroundColor: 'transparent' }} />
                     <div className="touroperator-main__tours">
                         <div className="tourBars">
                             {/* Hiển thị AddTour hoặc ModifyTour */}

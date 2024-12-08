@@ -17,6 +17,7 @@ import PaymentPage from "../Pages/Payment/Payment";
 import RefundPage from "../Pages/Refund/Refund";
 import ProtectedRoute from "./ProtectedRoute";
 import TourResult from "../Pages/Tours/TourResult";
+import TourResultOperator from "../Pages/Tours/TourResult_op";
 const Routers = ({ isLoggedIn, setIsLoggedIn }) => {
     return (
         <Routes>
@@ -34,10 +35,11 @@ const Routers = ({ isLoggedIn, setIsLoggedIn }) => {
             <Route path="/tour/search" element={<SearchResult />} />
             <Route path="/view-booking" element={<ViewBooking />} /> {/* New route added */}
             <Route path="/view-booking/:id" element={<ViewBooking />} />
-            <Route path="/tour-result" element={<TourResult/>}/>
+            <Route path="/tour-result-traveler" element={<TourResult isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>}/>
+            <Route path="/tour-result-operator" element={<TourResultOperator/>}/>
             {/* Protected Routes */}
             <Route
-                path="/tour-operator"
+                path="/tour-operator" 
                 element={
                     <ProtectedRoute isLoggedIn={isLoggedIn}>
                         <TourOperator />

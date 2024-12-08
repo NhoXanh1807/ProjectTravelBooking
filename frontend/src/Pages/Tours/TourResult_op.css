@@ -19,20 +19,32 @@
   a {
     text-decoration: none;
   }
-  .tourresult h1{
-    font-size: 48px;
+
+  .tourresultop .tourresltop-header{
+    background-color: #CEE7E6;
+  }
+  .tourresultop h1{
     font-weight: 700;
     font-family: var(--font);
-    padding: 10px;
+    padding: 20px 40px 20px 40px;
+    font-size: 48px;
+
   }
-.tourresult .tourBars{
+.tourresultop .tourBars{
     display: flex;
     flex-direction: column;
     overflow-y: auto;
     gap: 10px;
     padding: 30px 60px;
+    margin-left: 30px;
+    margin-right: 30px;
+    border: 1px solid #E5A13D;
+    background-color: #CEE7E6;
+    border-radius: 20px 20px 10px 10px;
+    justify-content: center;
+    text-align: center;
 }
-.tourresult .pagination-controls{
+.tourresultop .pagination-controls{
   padding: 20px;
   border-radius: 20px;
 }
