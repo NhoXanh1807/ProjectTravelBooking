@@ -114,7 +114,7 @@ export const getTourBySearch = async (req, res) => {
 export const getTourByAdvancedSearch = async (req, res) => {
     try {
         // Lấy các thông tin từ query string
-        const { location, startDate, endDate, minPrice, maxPrice, type } = req.query;
+        const { location, startDate, endDate, minPrice, maxPrice, name } = req.query;
 
         // Tạo query tìm kiếm
         let query = {};
@@ -144,8 +144,8 @@ export const getTourByAdvancedSearch = async (req, res) => {
         }
 
         // Tìm kiếm theo loại tour (Type)
-        if (type) {
-            query.Type = { $regex: type, $options: 'i' }; // Tìm theo chuỗi không phân biệt hoa thường
+        if (name) {
+            query.TourName = { $regex: name, $options: 'i' }; // Tìm theo chuỗi không phân biệt hoa thường
         }
 
         // Lấy danh sách tour từ database
