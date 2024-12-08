@@ -61,7 +61,11 @@ export const getAllTour = async (req,res) => {
     
     try {
         const tours = await Tour.find({})
+<<<<<<< HEAD
         
+=======
+   
+>>>>>>> 4c15483c9ce1656af5ad9e7f7b37a7ee5165e9f4
         res.status(200).json({success:true,count:tours.length,message:'Successfully ' ,
             data:tours
         });
