@@ -96,7 +96,7 @@ function TourBooking({ isLoggedIn, setIsLoggedIn }) {
         fetchBookings();
     }, []);
 
-   const handleItemClick = (tour, booking) => {
+    const handleItemClick = (tour, booking) => {
         console.log("Selected Tour:", tour);
         console.log("Selected Booking:", booking);
         setSelectedTour(tour);
@@ -111,7 +111,7 @@ function TourBooking({ isLoggedIn, setIsLoggedIn }) {
     };
 
     const toggleSection = (section) => {
-        console.log( "Active Section Changed:", section);
+        console.log("Active Section Changed:", section);
         setActiveSection(section);
     };
 
@@ -140,13 +140,23 @@ function TourBooking({ isLoggedIn, setIsLoggedIn }) {
             {activeSection === "unpaid" && (
                 <div className="tourBookingHeader-content-unpaid">
                     {unpaidBookings.map((tour) => (
-                        <Tourbarthree
-                            key={tour.BookingID}
-                            item={tour}
-                            isSelected={selectedTour === tour}
-                            onClick={() => handleItemClick(tour)}
-                        />
+                        tour && tour.TourStatus === "Available" ? (
+                            <Tourbarthree
+                                key={tour.BookingID}
+                                item={tour}
+                                isSelected={selectedTour === tour}
+                                onClick={() => handleItemClick(tour)}
+                            />
+                        ) : (
+                            <Tourbarfourth
+                                key={tour.BookingID}
+                                item={tour}
+                                isSelected={selectedTour === tour}
+                                onClick={() => handleItemClick(tour)}
+                            />
+                        )
                     ))}
+
                 </div>
             )}
 
@@ -163,25 +173,27 @@ function TourBooking({ isLoggedIn, setIsLoggedIn }) {
                 </div>
             )}
 
-            <div className="tourBookingHeader-foot">
-                <div className="tourBookingHeader-foot-content">TOTAL PAYMENT:</div>
-                <div className="tourBookingHeader-foot-price">
-                    {totalPrice > 0
-                        ? `${new Intl.NumberFormat("vi-VN").format(totalPrice)} VND`
-                        : "0"}
+            {activeSection !== "paid" && (
+                <div className="tourBookingHeader-foot">
+                    <div className="tourBookingHeader-foot-content">TOTAL PAYMENT:</div>
+                    <div className="tourBookingHeader-foot-price">
+                        {totalPrice > 0
+                            ? `${new Intl.NumberFormat("vi-VN").format(totalPrice)} VND`
+                            : "0"}
+                    </div>
+                    <div className="tourBookingHeader-foot-btn">
+                        <Link
+                            to="/payment"
+                            state={{
+                                booking: selectedBooking,
+                                tour: selectedTour,
+                            }}
+                        >
+                            <button disabled={!selectedTour && !selectedBooking}>PAY</button>
+                        </Link>
+                    </div>
                 </div>
-                <div className="tourBookingHeader-foot-btn">
-                    <Link
-                        to="/payment"
-                        state={{
-                            booking: selectedBooking,
-                            tour: selectedTour,
-                        }}
-                    >
-                        <button disabled={!selectedTour || !selectedBooking}>PAY</button>
-                    </Link>
-                </div>
-            </div>
+            )}
             <Footer />
         </div>
     );
