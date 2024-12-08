@@ -9,6 +9,7 @@ import bookingData from "../../assets/data/booking";
 import BookingHeader from "../../Components/Headers/TravelerHeader/BookingHeader";
 import Footer from "../../Components/Footers/Footer";
 
+
 function TourBooking({ isLoggedIn, setIsLoggedIn }) {
     const [selectedTour, setSelectedTour] = useState(null); // Track the selected tour
     const [selectedBooking, setSelectedBooking] = useState(null); // Track the selected booking

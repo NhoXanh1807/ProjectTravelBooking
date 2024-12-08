@@ -22,7 +22,10 @@ function Homepage({ isLoggedIn, setIsLoggedIn }) {
             )}
 
             <div className="mostsearched">
-                <MostSearched />
+            <MostSearched 
+                isLoggedIn={isLoggedIn} 
+                setIsLoggedIn={setIsLoggedIn} 
+            />
             </div>
             <div className="tag">
                 <Tag />

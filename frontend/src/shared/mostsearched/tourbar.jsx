@@ -1,6 +1,7 @@
+import { Link } from 'react-router-dom';
 import './tourbar.css'
 function Tourbar({ item }) {
-    const { TourName, Locations, StartDate, EndDate, Price, LanguageOffers, TourStatus } = item;
+    const { TourName, Locations, StartDate, EndDate, Price, LanguageOffers, TourStatus, _id } = item;
     const formattedPrice = new Intl.NumberFormat('vi-VN').format(Price);
     return (
         <div className="tour-bar">
@@ -30,7 +31,7 @@ function Tourbar({ item }) {
             </div>
             <div className="tour-bar-foot">
                 <div className="tour-bar-footStatus">{TourStatus}</div>
-                <button className="book-btn">Book</button>
+                <Link to={`/tour/${_id}`}><button className="book-btn">Book</button></Link>
             </div>
         </div>
     );

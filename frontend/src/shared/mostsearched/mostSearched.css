@@ -46,11 +46,15 @@
     scroll-behavior: smooth; /* Smooth scrolling when JS triggers it */
     white-space: nowrap; /* Prevent line breaks */
 }
-
+.tours-section .tour-cards .tour-card-link{
+  width: auto;
+}
 .tours-section .tour-cards .tour-item {
-    display: inline-block; /* Ensures items stay in one row */
-    width: calc((100% - 55px) / 5); /* Adjust to keep 5 items in view */
-    min-width: 250px; /* Ensures a minimum size for each item */
+
+    display: inline-block;
+    width: 250px; /* Điều chỉnh giá trị này để thu hẹp */
+    min-width: 180px; /* Đảm bảo kích thước tối thiểu */
+    max-width: 250px; /* Đặt kích thước tối đa (nếu cần) */
 }
 
 

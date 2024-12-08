@@ -16,9 +16,9 @@ const BookingHeader = ({ handleClick }) => {
                 </div>
                 <div className="header-right">
                     <Link to="/home" className="header-link">Home</Link>
-                    <Link to="/tour" className="header-link">Tours</Link>
+                    <Link to="/tour" className="header-link">Tours</Link> 
                     <Link to="/booking" className="header-link">Booking</Link>
-                    <button onClick={handleClick} className='button-logout'>Log out<i className="fa-solid fa-right-from-bracket"></i></button>
+                    <Link to="/" className="header-link"><button onClick={handleClick} className='button-logout'>Log out<i className="fa-solid fa-right-from-bracket"></i></button></Link>
                 </div>
             </header>
 

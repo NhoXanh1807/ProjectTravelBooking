@@ -1,40 +1,122 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import './ToursDetail.css';
+import tourData from '../../assets/data/tour';
+import Footer from '../../Components/Footers/Footer';
+import GuestHeadernoSearch from '../../Components/Headers/GuestHeader/GuestHeader_nosearch';
+import BookingHeader from '../../Components/Headers/TravelerHeader/BookingHeader';
 
-const ToursDetail = ({ tour, open, onClose }) => {
-    if (!tour) return null;
-    if (!open) return null;
-    console.log(tour)
+const ToursDetail = ({ isLoggedIn, setIsLoggedIn }) => {
+    const { id } = useParams();
+    const navigate = useNavigate();
+    const tour = tourData.find((item) => item._id === id);
+
+    const [selectedImage, setSelectedImage] = useState(tour?.imgUrl?.[0] || '');
+
+    if (!tour) {
+        return (
+            <div className="tour-not-found">
+                <p>Tour not found!</p>
+                <Link to="/tour">Go Back</Link>
+            </div>
+        );
+    }
+
+    const handleImageClick = (image) => {
+        setSelectedImage(image);
+    };
+
+    const handleLogout = () => {
+        setIsLoggedIn(false);
+    };
+    const handleBook = () => {
+        if (isLoggedIn) {
+            navigate('/booking');
+        } else {
+            navigate('/login');
+        }
+    };
+
     return (
-        <div className="modal">
-            <div className="overlay" onClick={onClose}></div>
-            <div className="modal-content">
-                <button className="close-btn" onClick={onClose}>
-                    <i className="fa-solid fa-xmark"></i>
-                </button>
-                <h2 className="modal-title">{tour.TourName}</h2>
-                <div className="modal-body">
-                    <div className="modal-image">
-                        <img src={tour.imgUrl} alt={tour.TourName} />
+        <>
+            {isLoggedIn ? (
+                <BookingHeader isLoggedIn={isLoggedIn} handleClick={handleLogout} />
+            ) : (
+                <GuestHeadernoSearch isLoggedIn={isLoggedIn} handleClick={handleLogout} />
+            )}
+
+            <div className="tourdetail-content">
+                <div className="tourdetail-image">
+                    <div className="tourdetail-image-main">
+                        <img src={selectedImage} alt={tour.TourName} />
                     </div>
-                    <div className="modal-info">
-                        <p><b>Price:</b> {tour.Price} VND</p>
-                        <p><b>Location:</b> {tour.Locations.join(', ')}</p>
-                        <p><b>Available Seats:</b> {tour.AvailableSeats}</p>
-                        <p><b>Duration:</b> {tour.Duration}</p>
-                        <p><b>Languages Offered:</b> {tour.LanguageOffers.join(', ')}</p>
-                        <p><b>Cancellation Policy:</b> {tour.CancellationPolicy}</p>
-                        <p><b>Description:</b> {tour.Description}</p>
-                        <button className="book-btn">Book Now</button>
-                        <div className="social-media-links">
-                            <i className="fa-solid fa-facebook"></i>
-                            <i className="fa-solid fa-twitter"></i>
-                            <i className="fa-solid fa-instagram"></i>
+                    <div className="tourdetail-image-slice-bar">
+                        {tour.imgUrl.map((image, index) => (
+                            <div
+                                key={index}
+                                className="tourdetail-image-thumbnail"
+                                onClick={() => handleImageClick(image)}
+                            >
+                                <img src={image} alt={`${tour.TourName} thumbnail ${index + 1}`} />
+                            </div>
+                        ))}
+                    </div>
+                </div>
+                <div className="tourdetail-info">
+                    <h2 className="tourdetail-title">{tour.TourName}
+                        <button onClick={() => navigate(-1)}><i className="fa-solid fa-xmark"></i></button>
+                    </h2>
+                    <div className="tourdetail-book-btn">
+                        <button className="book-btn" onClick={handleBook}>
+                            Book
+                        </button>
+                    </div>
+                    <div className="tourdetail-outer">
+                        <div className="tourdetail-info-name">Price:</div>
+                        <div className="tourdetail-info-val">
+                            {tour.Price.toLocaleString('vi-VN')} VND
+                        </div>
+                    </div>
+                    <div className="tourdetail-outer">
+                        <div className="tourdetail-info-name">Location:</div>
+                        <div className="tourdetail-info-val">
+                            {tour.Locations.join(', ')}
+                        </div>
+                    </div>
+                    <div className="tourdetail-outer">
+                        <div className="tourdetail-info-name">Available Seats:</div>
+                        <div className="tourdetail-info-val">{tour.AvailableSeats}</div>
+                    </div>
+                    <div className="tourdetail-outer">
+                        <div className="tourdetail-info-name">Duration:</div>
+                        <div className="tourdetail-info-val">{tour.Duration}</div>
+                    </div>
+                    <div className="tourdetail-outer">
+                        <div className="tourdetail-info-name">Languages Offered:</div>
+                        <div className="tourdetail-info-val">
+                            {tour.LanguageOffers.join(', ')}
+                        </div>
+                    </div>
+                    <div className="tourdetail-outer">
+                        <div className="tourdetail-info-name">Cancellation Policy:</div>
+                        <div className="tourdetail-info-val">
+                            {tour.CancellationPolicy}
+                        </div>
+                    </div>
+                    <div className="tourdetail-outer">
+                        <div className="tourdetail-info-name">Description:</div>
+                        <div className="tourdetail-info-val">{tour.Description}</div>
+                    </div>
+                    <div className="tourdetail-outer">
+                        <div className="tourdetail-info-name">Type:</div>
+                        <div className="tourdetail-info-val">
+                            {tour.Type}
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+            <Footer />
+        </>
     );
 };
 

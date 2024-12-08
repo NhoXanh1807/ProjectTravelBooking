@@ -2,7 +2,15 @@ import image from '../image/Rectangle 15.png'
 const tourData = [
     {
         _id: "6743df832432dba1b4c79140",
-        imgUrl: image,
+        imgUrl: [
+            image,
+            image,
+            image,
+            image,
+            image,
+            image,
+            image,
+            image],
         TourName: "Discovery Vietnam",
         TourStatus: "Available",
         AvailableSeats: 17,
@@ -43,7 +51,15 @@ const tourData = [
     },
     {
         _id: "674d8eca43b10ab835978059",
-        imgUrl: image,
+        imgUrl: [
+            image,
+            image,
+            image,
+            image,
+            image,
+            image,
+            image,
+            image],
         TourName: "Exploring Vietnam's Wonders",
         TourStatus: "Available",
         AvailableSeats: 20,
@@ -78,7 +94,15 @@ const tourData = [
     },
     {
         _id: "674d8eca43b10ab835978099",
-        imgUrl: image,
+        imgUrl: [
+            image,
+            image,
+            image,
+            image,
+            image,
+            image,
+            image,
+            image],
         TourName: "Exploring Vietnam's Wonders",
         TourStatus: "Sold out",
         AvailableSeats: 20,

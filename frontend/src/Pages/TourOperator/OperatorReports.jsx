@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import "./OperatorReports.css";
 import OperatorHeader from "../../Components/Headers/OperatorHeader/OperatorHeader";
 import OperatorSearchBar from "../../shared/Searched-bar/reports-searched-bar";
-import { useNavigate } from "react-router-dom";
 import bookingData from "../../assets/data/booking";
 import paymentData from "../../assets/data/payment";
-
+import { useNavigate, Link } from "react-router-dom";
 const Reports = () => {
   // Merge bookingData and paymentData
   const reports = bookingData.map((booking) => {
@@ -24,7 +23,9 @@ const Reports = () => {
   const navigate = useNavigate();
   const itemsPerPage = 5; // Limit per page
   const [currentPage, setCurrentPage] = useState(1);
-
+  const viewBooking = (bookingId) => {
+    navigate(`/view-booking/${bookingId}`); // Navigate with the booking ID
+  };
   // Calculate total pages
   const totalPages = Math.ceil(reports.length / itemsPerPage);
 
@@ -46,9 +47,6 @@ const Reports = () => {
     }
   };
 
-  const viewBooking = (bookingId) => {
-    navigate(`/booking/${bookingId}`, { state: { bookingId } });
-  };
 
   return (
     <div className="OperatorReports">
@@ -106,9 +104,8 @@ const Reports = () => {
             <button
               key={pageIndex + 1}
               onClick={() => setCurrentPage(pageIndex + 1)}
-              className={`pagination-button ${
-                currentPage === pageIndex + 1 ? "active" : ""
-              }`}
+              className={`pagination-button ${currentPage === pageIndex + 1 ? "active" : ""
+                }`}
             >
               {pageIndex + 1}
             </button>

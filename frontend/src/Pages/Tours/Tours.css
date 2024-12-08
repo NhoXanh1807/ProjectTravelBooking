@@ -26,3 +26,7 @@
     gap: 10px;
     padding: 30px 60px;
 }
+.pagination-controls{
+  padding: 20px;
+  border-radius: 20px;
+}

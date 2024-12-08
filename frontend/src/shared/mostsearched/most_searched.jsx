@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 import './mostSearched.css';
 import TourCard from './tourcard';
 import tourData from '../../assets/data/tour';
 import ToursDetail from '../../Pages/Tours/ToursDetail';
 
-const MostSearched = () => {
+const MostSearched = ({ isLoggedIn, setIsLoggedIn }) => { // Nhận isLoggedIn và setIsLoggedIn qua props
     const [selectedTour, setSelectedTour] = useState(null);
     const [isOpen, setIsOpen] = useState(false);
 
@@ -22,10 +23,12 @@ const MostSearched = () => {
                         key={tour._id}
                         item={tour}
                         onClick={() => handleItemClick(tour)}
+                        isLoggedIn={isLoggedIn} // Truyền isLoggedIn vào TourCard
+                        setIsLoggedIn={setIsLoggedIn} // Truyền setIsLoggedIn vào TourCard
                     />
                 ))}
             </div>
-
+            
             {isOpen && selectedTour && (
                 <ToursDetail
                     tour={selectedTour}
@@ -33,7 +36,6 @@ const MostSearched = () => {
                     onClose={() => setIsOpen(false)}
                 />
             )}
-
         </section>
     );
 };

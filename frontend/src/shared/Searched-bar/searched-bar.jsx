@@ -45,7 +45,7 @@ function SearchBar(){
                 />
             </div>
 
-            <Link to='/tour' className='header-link'><button aria-label="Search for trips">Search</button></Link>
+            <Link to='/tour' className='header-link'><button aria-label="Search for trips" className='search-bar-btn'>Search</button></Link>
         </div>
     );
 }

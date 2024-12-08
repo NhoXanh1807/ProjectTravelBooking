@@ -31,8 +31,13 @@
     padding: 20px;
 }
 
-.search-bar .header-link {
-    padding: 10px;
+
+.search-bar .header-link button{
+    background-color: transparent;
+    border: 0;
+    width: auto;
+    height: auto;
+    padding: 20px;
     border-radius: 10px;
     text-decoration: none;
     background-color: orange;
@@ -40,12 +45,6 @@
     font-family: 'Be Vietnam Pro', sans-serif;
     font-size: 20px;
     font-weight: 700;
-    width: auto;
-    height: auto;
-}
-.search-bar .header-link button{
-    background-color: transparent;
-    border: 0;
 }
 .search-bar.header-link  button:hover{
     background-color: nonr;
