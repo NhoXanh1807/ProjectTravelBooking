@@ -9,13 +9,13 @@ import { BASE_URL } from '../../utils/config';
 const ToursDetail = ({ isLoggedIn, setIsLoggedIn }) => {
     const { id } = useParams(); // Lấy id từ URL
     const navigate = useNavigate();
-    const [selectedImage, setSelectedImage] = useState(null);  // Initialize as null or a default image
-    const [tour, setTour] = useState(null);  // State lưu dữ liệu tour
-    const [loading, setLoading] = useState(true);  // State cho loading
-    const [error, setError] = useState(null);  // State cho lỗi
-    
+    const [selectedImage, setSelectedImage] = useState(null);
+    const [tour, setTour] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const [isBooking, setIsBooking] = useState(false); // Trạng thái booking
+
     useEffect(() => {
-        // Gọi API để lấy dữ liệu tour
         const fetchTourData = async () => {
             try {
                 const response = await fetch(`${BASE_URL}/tours/${id}`);
@@ -23,31 +23,67 @@ const ToursDetail = ({ isLoggedIn, setIsLoggedIn }) => {
                     throw new Error('Tour not found');
                 }
                 const data = await response.json();
-                setTour(data);  // Lưu dữ liệu tour vào state
-                // Set the first image from the fetched data if available
+                setTour(data);
                 if (data?.data?.imgUrl?.length > 0) {
                     setSelectedImage(data.data.imgUrl[0]);
                 }
             } catch (error) {
-                setError(error.message);  // Xử lý lỗi nếu có
+                setError(error.message);
             } finally {
-                setLoading(false);  // Đặt loading thành false khi đã nhận dữ liệu hoặc gặp lỗi
+                setLoading(false);
             }
         };
 
-        fetchTourData();  // Gọi hàm fetch khi component mount
-    }, [id]); // Chạy lại khi id thay đổi
+        fetchTourData();
+    }, [id]);
 
-    const handleImageClick = (image) => {
-        setSelectedImage(image);
+    const handleLogout = () => {
+        setIsLoggedIn(false);
+    };
+
+    const handleBook = async () => {
+        if (!isLoggedIn) {
+            navigate('/login');
+            return;
+        }
+
+        setIsBooking(true); // Đặt trạng thái booking
+
+        try {
+            const token = localStorage.getItem('token'); // Lấy token từ localStorage
+            const response = await fetch(`${BASE_URL}/bookings`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token}`, // Gửi token để xác thực
+                },
+                body: JSON.stringify({
+                    TourID: id,
+                    TravelerID: token ? JSON.parse(atob(token.split('.')[1])).id : null,
+                    TotalPrice: tour.data.Price,
+                    BookingStatus: 'Pending',
+                }),
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to create booking');
+            }
+
+            alert('Booking successful!');
+            navigate('/booking'); // Điều hướng tới trang danh sách booking
+        } catch (error) {
+            alert(error.message || 'Booking failed!');
+        } finally {
+            setIsBooking(false); // Reset trạng thái booking
+        }
     };
 
     if (loading) {
-        return <div>Loading...</div>; // Hiển thị loading khi đang fetch dữ liệu
+        return <div>Loading...</div>;
     }
 
     if (error) {
-        return <div>{error}</div>; // Hiển thị lỗi nếu có
+        return <div>{error}</div>;
     }
 
     if (!tour) {
@@ -58,18 +94,6 @@ const ToursDetail = ({ isLoggedIn, setIsLoggedIn }) => {
             </div>
         );
     }
-
-    const handleLogout = () => {
-        setIsLoggedIn(false);
-    };
-
-    const handleBook = () => {
-        if (isLoggedIn) {
-            navigate('/booking');
-        } else {
-            navigate('/login');
-        }
-    };
 
     return (
         <>
@@ -89,7 +113,7 @@ const ToursDetail = ({ isLoggedIn, setIsLoggedIn }) => {
                             <div
                                 key={index}
                                 className="tourdetail-image-thumbnail"
-                                onClick={() => handleImageClick(image)}
+                                onClick={() => setSelectedImage(image)}
                             >
                                 <img src={image} alt={`Thumbnail ${index + 1}`} />
                             </div>
@@ -99,14 +123,24 @@ const ToursDetail = ({ isLoggedIn, setIsLoggedIn }) => {
                 <div className="tourdetail-info">
                     <h2 className="tourdetail-title">
                         {tour.data.TourName}
-                        <button onClick={() => navigate(-1)}><i className="fa-solid fa-xmark"></i></button>
+                        <button onClick={() => navigate(-1)}>
+                            <i className="fa-solid fa-xmark"></i>
+                        </button>
                     </h2>
                     <div className="tourdetail-book-btn">
-                        <button className="book-btn" onClick={handleBook}>Book</button>
+                        <button
+                            className="book-btn"
+                            onClick={handleBook}
+                            disabled={isBooking}
+                        >
+                            {isBooking ? 'Booking...' : 'Book'}
+                        </button>
                     </div>
                     <div className="tourdetail-outer">
                         <div className="tourdetail-info-name">Price:</div>
-                        <div className="tourdetail-info-val">{tour.data.Price.toLocaleString('vi-VN')} VND</div>
+                        <div className="tourdetail-info-val">
+                            {tour.data.Price.toLocaleString('vi-VN')} VND
+                        </div>
                     </div>
                     <div className="tourdetail-outer">
                         <div className="tourdetail-info-name">Location:</div>

@@ -12,7 +12,7 @@ import { verifyAdmin, verifyUser } from '../utils/verifyToken.js';
 const router = express.Router();
 
 // Tạo booking (yêu cầu người dùng đăng nhập)
-router.post('/', verifyUser, createBooking);
+router.post('/',  createBooking);
 
 // Lấy danh sách tất cả booking (chỉ admin có quyền)
 router.get('/',  getAllBookings);

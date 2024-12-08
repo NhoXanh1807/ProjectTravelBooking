@@ -47,13 +47,29 @@ a {
 .tours-section .tour-cards {
     display: flex;
     gap: 20px;
-    overflow-x: hidden;
+    overflow-x:auto;
     padding: 10px;
     scroll-behavior: smooth;
     white-space: nowrap;
     transition: transform 0.3s ease; /* Smooth transition for sliding */
 }
+.tours-section .tour-cards::-webkit-scrollbar {
+    height: 8px;
+}
 
+.tours-section .tour-cards::-webkit-scrollbar-track {
+    background: #e4e4e4; /* Light gray track */
+    border-radius: 10px;
+}
+
+.tours-section .tour-cards::-webkit-scrollbar-thumb {
+    background: var(--shadow-color); /* Secondary color */
+    border-radius: 10px;
+}
+
+.tours-section .tour-cards::-webkit-scrollbar-thumb:hover {
+    background: var(--button-hover); /* Darker on hover */
+}
 .tours-section .tour-cards .tour-card-link {
     width: auto;
 }
