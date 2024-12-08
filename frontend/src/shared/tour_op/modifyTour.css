@@ -283,7 +283,7 @@ a {
     padding: 10px;
     border-top: 1px solid #667479;
 }
-.modifyTour .modifyTour-content .form-conclusion .form-conclusion__content{
+.modifyTour .modifyTour-content .form-conclusion button{
     font-family: var(--font);
     font-weight: 700;
     font-size: 24px;
@@ -293,13 +293,13 @@ a {
     gap: 10px;
 }
 
-.modifyTour .modifyTour-content .form-conclusion .form-conclusion__btns .modifyTour-save{
+.modifyTour .modifyTour-content .form-conclusion .modifyTour-save{
     width: auto;
     padding: 12px 28px 12px 28px ;
     border-radius: 57px;
     background-color: #1488DB;
 }
-.modifyTour .modifyTour-content .form-conclusion .form-conclusion__btns .modifyTour-cancel{
+.modifyTour .modifyTour-content .form-conclusion .modifyTour-cancel{
     width: auto;
     padding: 12px 28px 12px 28px ;
     border-radius: 57px;

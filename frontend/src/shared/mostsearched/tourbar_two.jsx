@@ -1,32 +1,54 @@
 import { useState } from 'react';
 import './tourbar_two.css';
-import ModifyTour from '../../shared/tour_op/modifyTour'; // Import form ModifyTour
+import ModifyTour from '../../shared/tour_op/modifyTour';
+import { BASE_URL } from '../../utils/config';
 
 function Tourbartwo({ item, className }) {
-    const [showConfirm, setShowConfirm] = useState(false); // Quản lý trạng thái hiển thị confirm
-    const [isEditing, setIsEditing] = useState(false); // Trạng thái hiển thị form sửa đổi
+    const [showConfirm, setShowConfirm] = useState(false);
+    const [isEditing, setIsEditing] = useState(false);
+    const [deleteStatus, setDeleteStatus] = useState(null); // Trạng thái xóa
     const { TourName, Locations, StartDate, EndDate, Price, LanguageOffers, TourStatus } = item;
     const formattedPrice = new Intl.NumberFormat('vi-VN').format(Price);
 
     const handleDeleteClick = () => {
-        setShowConfirm(true); // Hiển thị confirmRemove
+        setShowConfirm(true);
     };
 
     const handleCancelClick = () => {
-        setShowConfirm(false); // Ẩn confirmRemove
+        setShowConfirm(false);
     };
 
-    const handleConfirmClick = () => {
-        console.log('Tour deleted'); // Xử lý logic xóa tour
-        setShowConfirm(false); // Ẩn confirmRemove sau khi xác nhận
+    const handleConfirmClick = async () => {
+        try {
+            const response = await fetch(`${BASE_URL}/tours/${item._id}`, {
+                method: 'DELETE',
+            });
+    
+            if (!response.ok) {
+                throw new Error('Failed to delete the tour.');
+            }
+    
+            const result = await response.json();
+            if (result.success) {
+                console.log(`Tour with ID ${item._id} deleted successfully.`); // Log thành công
+                setDeleteStatus('Successfully deleted the tour.');
+                setShowConfirm(false);
+            } else {
+                throw new Error(result.message);
+            }
+        } catch (error) {
+            console.error(`Error deleting tour: ${error.message}`); // Log lỗi
+            setDeleteStatus(`Error: ${error.message}`);
+        }
     };
+    
 
     const handleEditClick = () => {
-        setIsEditing(true); // Mở form sửa đổi
+        setIsEditing(true);
     };
 
     const handleCancelEdit = () => {
-        setIsEditing(false); // Đóng form sửa đổi
+        setIsEditing(false);
     };
 
     return (
@@ -67,17 +89,15 @@ function Tourbartwo({ item, className }) {
                 </div>
             </div>
 
-            {/* Hiển thị form sửa đổi nếu isEditing = true */}
             {isEditing && (
                 <div className="modify-tour-form">
                     <ModifyTour
                         selectedTourId={item._id}
-                        onCancel={handleCancelEdit} // Truyền callback để ẩn form
+                        onCancel={handleCancelEdit}
                     />
                 </div>
             )}
 
-            {/* Hiển thị confirmRemove khi showConfirm = true */}
             {showConfirm && (
                 <div className="confirmRemove">
                     <div className="confirmRemove-content">
@@ -93,6 +113,8 @@ function Tourbartwo({ item, className }) {
                     </div>
                 </div>
             )}
+
+            {deleteStatus && <div className="delete-status">{deleteStatus}</div>}
         </div>
     );
 }

@@ -14,15 +14,15 @@ const router = express.Router();
 router.post('/', verifyUser, createBooking);
 
 // Lấy danh sách tất cả booking (chỉ admin có quyền)
-router.get('/', verifyAdmin, getAllBookings);
+router.get('/',  getAllBookings);
 
 // Lấy danh sách booking của một người dùng (yêu cầu người dùng đăng nhập)
-router.get('/user/:TravelerId', verifyUser, getUserBookings);
+router.get('/user/:TravelerId', getUserBookings);
 
 // Hủy booking (yêu cầu người dùng đăng nhập)
-router.delete('/:bookingId', verifyUser, cancelBooking);
+router.delete('/:bookingId', cancelBooking);
 
 // Cập nhật trạng thái booking (chỉ admin có quyền)
-router.patch('/:bookingId', verifyAdmin, updateBookingStatus);
+router.patch('/:bookingId',  updateBookingStatus);
 
 export default router;

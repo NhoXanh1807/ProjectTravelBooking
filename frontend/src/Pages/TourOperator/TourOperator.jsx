@@ -2,15 +2,17 @@ import OperatorHeader from '../../Components/Headers/OperatorHeader/OperatorHead
 import SearchMore from '../../shared/Searched-bar/search_more';
 import './TourOperator.css';
 import Tourbartwo from '../../shared/mostsearched/tourbar_two';
-import tourData from '../../assets/data/tour';
 import React, { useState } from 'react';
 import ModifyTour from '../../shared/tour_op/modifyTour';
 import AddTour from '../../shared/tour_op/addTour';
+import { BASE_URL } from "../../utils/config"; 
+import  useFetch  from "../../hooks/useFetch"; // Import useFetch hook
 
 function TourOperator({ isLoggedIn, setIsLoggedIn }) {
     const [selectedTour, setSelectedTour] = useState(null); // Tour được chọn
     const [showAddTour, setShowAddTour] = useState(false); // Hiện form AddTour
     const [showModifyTour, setShowModifyTour] = useState(false); // Hiện form ModifyTour
+    const { data: tours, error, loading } = useFetch(`${BASE_URL}/tours?page=0`); // Fetch tour data từ API
 
     // Xử lý khi click vào một tour
     const handleItemClick = (tour) => {
@@ -58,15 +60,26 @@ function TourOperator({ isLoggedIn, setIsLoggedIn }) {
                                     onCancel={handleCancelModify}
                                 />
                             )}
-                            {/* Danh sách các tour */}
-                            {tourData.map((tour) => (
-                                <Tourbartwo
-                                    key={tour._id}
-                                    item={tour}
-                                    onClick={() => handleItemClick(tour)}
-                                    className="Tourbartwo"
-                                />
-                            ))}
+
+                            {/* Hiển thị danh sách tour */}
+                            {loading ? (
+                                <p>Loading...</p> // Hiển thị khi dữ liệu đang được tải
+                            ) : error ? (
+                                <p>{error}</p> // Hiển thị lỗi nếu có
+                            ) : (
+                                tours.length > 0 ? (
+                                    tours.map((tour) => (
+                                        <Tourbartwo
+                                            key={tour._id}
+                                            item={tour}
+                                            onClick={() => handleItemClick(tour)}
+                                            className="Tourbartwo"
+                                        />
+                                    ))
+                                ) : (
+                                    <p>No tours available.</p> // Nếu không có tour nào
+                                )
+                            )}
                         </div>
                     </div>
                 </div>
