@@ -1,74 +1,122 @@
-import React, { useState } from "react";
-import tourData from "../../assets/data/tour";
+import React, { useState, useEffect } from "react";
+import { BASE_URL } from "../../utils/config";
 import "./modifyTour.css";
 
 function ModifyTour({ selectedTourId, onCancel }) {
-    // Find the selected tour
-    const selectedTour = tourData.find((tour) => tour._id === selectedTourId);
+    const [formData, setFormData] = useState({});
+    const [originalData, setOriginalData] = useState({});
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
 
-    // Initialize form data with selected tour's data
-    const [formData, setFormData] = useState({
-        name: selectedTour?.TourName || "",
-        price: selectedTour?.Price || "",
-        fromDate: selectedTour?.StartDate?.toISOString().split("T")[0] || "",
-        toDate: selectedTour?.EndDate?.toISOString().split("T")[0] || "",
-        locations: selectedTour?.Locations.join(", ") || "",
-        languages: selectedTour?.LanguageOffers.join(", ") || "",
-        cancelPolicy: selectedTour?.CancellationPolicy || "",
-        desc: selectedTour?.Description || "",
-        type: selectedTour?.Type || "",
-        capacity: selectedTour?.Capacity || "",
-        status: selectedTour?.TourStatus || "",
-    });
+    // Fetch tour details when component loads
+    useEffect(() => {
+        const fetchTourDetails = async () => {
+            try {
+                const response = await fetch(`${BASE_URL}/tours/${selectedTourId}`);
+                if (!response.ok) {
+                    throw new Error("Failed to fetch tour details");
+                }
+                const tour = await response.json();
+                const formattedData = {
+                    name: tour.TourName || "",
+                    price: tour.Price || "",
+                    fromDate: tour.StartDate?.split("T")[0] || "",
+                    toDate: tour.EndDate?.split("T")[0] || "",
+                    locations: tour.Locations?.join(", ") || "",
+                    languages: tour.LanguageOffers?.join(", ") || "",
+                    cancelPolicy: tour.CancellationPolicy || "",
+                    desc: tour.Description || "",
+                    type: tour.Type || "",
+                    capacity: tour.Capacity || "",
+                    status: tour.TourStatus || "",
+                };
+                setFormData(formattedData);
+                setOriginalData(formattedData);
+            } catch (err) {
+                setError(err.message);
+            }
+        };
 
-    // Handle input changes
+        fetchTourDetails();
+    }, [selectedTourId]);
+
+    // Handle form field changes
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
     // Handle form submission
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        setLoading(true);
+        setError(null);
 
-        // Update the selected tour data in tourData
-        const updatedTourData = tourData.map((tour) =>
-            tour._id === selectedTourId
-                ? {
-                    ...tour,
-                    TourName: formData.name,
-                    Price: parseFloat(formData.price),
-                    StartDate: new Date(formData.fromDate),
-                    EndDate: new Date(formData.toDate),
-                    Locations: formData.locations.split(",").map((loc) => loc.trim()),
-                    LanguageOffers: formData.languages.split(",").map((lang) => lang.trim()),
-                    CancellationPolicy: formData.cancelPolicy,
-                    Description: formData.desc,
-                    Type: formData.type,
-                    Capacity: parseInt(formData.capacity, 10),
-                    TourStatus: formData.status,
-                }
-                : tour
-        );
+        // Only include fields that are different from the original data
+        const updatedData = {};
+        Object.keys(formData).forEach((key) => {
+            if (formData[key] !== originalData[key]) {
+                updatedData[key] = formData[key];
+            }
+        });
 
+        if (Object.keys(updatedData).length === 0) {
+            alert("No changes to save!");
+            setLoading(false);
+            return;
+        }
 
+        try {
+            const response = await fetch(`${BASE_URL}/tours/${selectedTourId}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    TourName: updatedData.name,
+                    Price: updatedData.price ? parseFloat(updatedData.price) : undefined,
+                    StartDate: updatedData.fromDate,
+                    EndDate: updatedData.toDate,
+                    Locations: updatedData.locations
+                        ? updatedData.locations.split(",").map((loc) => loc.trim())
+                        : undefined,
+                    LanguageOffers: updatedData.languages
+                        ? updatedData.languages.split(",").map((lang) => lang.trim())
+                        : undefined,
+                    CancellationPolicy: updatedData.cancelPolicy,
+                    Description: updatedData.desc,
+                    Type: updatedData.type,
+                    Capacity: updatedData.capacity
+                        ? parseInt(updatedData.capacity, 10)
+                        : undefined,
+                    TourStatus: updatedData.status,
+                }),
+            });
 
-        console.log("Tour data updated:", updatedTourData);
+            if (!response.ok) {
+                throw new Error("Failed to update tour");
+            }
+
+            alert("Tour updated successfully!");
+            onCancel(); // Close the form after successful update
+        } catch (err) {
+            setError(err.message);
+        } finally {
+            setLoading(false);
+        }
     };
-    const handleCancel = () => {
-        if (onCancel) onCancel(); // Gọi callback khi nhấn nút Cancel
-    };
+
     return (
         <div className="modifyTour">
             <form className="modifyTour-content" onSubmit={handleSubmit}>
+                {error && <div className="error-message">{error}</div>}
                 <div className="modifyTour-name">
                     <label>Name:</label>
                     <input
                         type="text"
                         name="name"
-                        className="input-name"
-                        placeholder="Tour Name"
                         value={formData.name}
                         onChange={handleChange}
+                        placeholder="Tour Name"
                     />
                 </div>
                 <div className="modifyTour-price">
@@ -76,10 +124,9 @@ function ModifyTour({ selectedTourId, onCancel }) {
                     <input
                         type="number"
                         name="price"
-                        className="input-price"
-                        placeholder="Tour Price"
                         value={formData.price}
                         onChange={handleChange}
+                        placeholder="Tour Price"
                     />
                     <label>VND</label>
                 </div>
@@ -106,9 +153,9 @@ function ModifyTour({ selectedTourId, onCancel }) {
                     <input
                         type="text"
                         name="locations"
-                        placeholder="Comma-separated locations"
                         value={formData.locations}
                         onChange={handleChange}
+                        placeholder="Comma-separated locations"
                     />
                 </div>
                 <div className="modifyTour-languages">
@@ -116,27 +163,27 @@ function ModifyTour({ selectedTourId, onCancel }) {
                     <input
                         type="text"
                         name="languages"
-                        placeholder="Comma-separated languages"
                         value={formData.languages}
                         onChange={handleChange}
+                        placeholder="Comma-separated languages"
                     />
                 </div>
                 <div className="modifyTour-cancelPolicy">
                     <label>Cancellation Policy:</label>
                     <textarea
                         name="cancelPolicy"
-                        placeholder="Cancellation Policy"
                         value={formData.cancelPolicy}
                         onChange={handleChange}
+                        placeholder="Cancellation Policy"
                     />
                 </div>
                 <div className="modifyTour-desc">
                     <label>Description:</label>
                     <textarea
                         name="desc"
-                        placeholder="Tour Description"
                         value={formData.desc}
                         onChange={handleChange}
+                        placeholder="Tour Description"
                     />
                 </div>
                 <div className="modifyTour-type">
@@ -144,9 +191,9 @@ function ModifyTour({ selectedTourId, onCancel }) {
                     <input
                         type="text"
                         name="type"
-                        placeholder="Tour Type"
                         value={formData.type}
                         onChange={handleChange}
+                        placeholder="Tour Type"
                     />
                 </div>
                 <div className="modifyTour-capacity">
@@ -154,19 +201,15 @@ function ModifyTour({ selectedTourId, onCancel }) {
                     <input
                         type="number"
                         name="capacity"
-                        placeholder="Tour Capacity"
                         value={formData.capacity}
                         onChange={handleChange}
+                        placeholder="Tour Capacity"
                     />
                     <label>Seats</label>
                 </div>
                 <div className="modifyTour-status">
                     <label>Status:</label>
-                    <select
-                        name="status"
-                        value={formData.status}
-                        onChange={handleChange}
-                    >
+                    <select name="status" value={formData.status} onChange={handleChange}>
                         <option value="" disabled>Select Status</option>
                         <option value="Available">Available</option>
                         <option value="Unavailable">Unavailable</option>
@@ -175,23 +218,17 @@ function ModifyTour({ selectedTourId, onCancel }) {
                     </select>
                 </div>
                 <div className="form-conclusion">
-                    <div className="form-conclusion__content">
-                        Confirm to update?
-                    </div>
-                    <div className="form-conclusion__btns">
-                        <button type="submit" className="modifyTour-save">
-                            Save
-                        </button>
-                        <button
+                    <button type="submit" disabled={loading} className="modifyTour-save">
+                        {loading ? "Saving..." : "Save"}
+                    </button>
+                    <button
                         type="button"
                         className="modifyTour-cancel"
-                        onClick={handleCancel}
+                        onClick={onCancel}
                     >
                         Cancel
                     </button>
-                    </div>
                 </div>
-
             </form>
         </div>
     );

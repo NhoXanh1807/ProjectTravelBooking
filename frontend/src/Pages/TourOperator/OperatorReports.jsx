@@ -3,36 +3,27 @@ import "./OperatorReports.css";
 import OperatorHeader from "../../Components/Headers/OperatorHeader/OperatorHeader";
 import OperatorSearchBar from "../../shared/Searched-bar/reports-searched-bar";
 import { useNavigate } from "react-router-dom";
-import bookingData from "../../assets/data/booking";
-import paymentData from "../../assets/data/payment";
+import { BASE_URL } from "../../utils/config";
+import useFetch from "../../hooks/useFetch";
 
 const Reports = () => {
-  // Merge bookingData and paymentData
-  const reports = bookingData.map((booking) => {
-    const payment = booking._id === paymentData.BookingID ? paymentData : null;
-    return {
-      bookingId: booking._id, // Booking ID
-      bookingStatus: booking.BookingStatus, // Booking Status
-      bookingDate: booking.BookingDate.toISOString().slice(0, 10), // Booking Date
-      paymentStatus: payment ? payment.PaymentStatus : "N/A", // Payment Status
-      paymentDate: payment ? payment.PaymentDate.toISOString().slice(0, 10) : "N/A", // Payment Date
-      refundStatus: booking.BookingStatus === "Cancelled" ? "In Process" : "Not Applicable", // Refund Status
-      refundDate: booking.RefundDate ? booking.RefundDate.toISOString().slice(0, 10) : "N/A", // Refund Date
-    };
-  });
-
   const navigate = useNavigate();
-  const itemsPerPage = 5; // Limit per page
+  const itemsPerPage = 5; // Số lượng items mỗi trang
   const [currentPage, setCurrentPage] = useState(1);
 
-  // Calculate total pages
-  const totalPages = Math.ceil(reports.length / itemsPerPage);
+  // Gọi API bằng useFetch
+  const { data: reports, loading, error } = useFetch(`${BASE_URL}/bookings`);
 
-  // Get current page data
-  const currentData = reports.slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
-  );
+  // Tính toán số trang
+  const totalPages = reports ? Math.ceil(reports.length / itemsPerPage) : 0;
+
+  // Lấy dữ liệu của trang hiện tại
+  const currentData = reports
+    ? reports.slice(
+        (currentPage - 1) * itemsPerPage,
+        currentPage * itemsPerPage
+      )
+    : [];
 
   const goToPreviousPage = () => {
     if (currentPage > 1) {
@@ -50,6 +41,9 @@ const Reports = () => {
     navigate(`/booking/${bookingId}`, { state: { bookingId } });
   };
 
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error}</p>;
+
   return (
     <div className="OperatorReports">
       <div className="OperatorReports-header">
@@ -63,29 +57,25 @@ const Reports = () => {
             <thead>
               <tr>
                 <th>Booking ID</th>
-                <th>Booking Status</th>
+                <th>Traveler</th>
+                <th>Tour</th>
+                <th>Status</th>
                 <th>Booking Date</th>
-                <th>Payment Status</th>
-                <th>Payment Date</th>
-                <th>Refund Status</th>
-                <th>Refund Date</th>
                 <th></th>
               </tr>
             </thead>
             <tbody>
               {currentData.map((report, index) => (
                 <tr key={index}>
-                  <td>{report.bookingId}</td>
-                  <td>{report.bookingStatus}</td>
-                  <td>{report.bookingDate}</td>
-                  <td>{report.paymentStatus}</td>
-                  <td>{report.paymentDate}</td>
-                  <td>{report.refundStatus}</td>
-                  <td>{report.refundDate}</td>
+                  <td>{report._id}</td>
+                  <td>{report.TravelerID?.name || "N/A"}</td>
+                  <td>{report.TourID?.name || "N/A"}</td>
+                  <td>{report.status || "N/A"}</td>
+                  <td>{new Date(report.bookingDate).toLocaleDateString()}</td>
                   <td>
                     <i
                       className="fa-solid fa-circle-info"
-                      onClick={() => viewBooking(report.bookingId)}
+                      onClick={() => viewBooking(report._id)}
                       style={{ cursor: "pointer", fontSize: "24px" }}
                     ></i>
                   </td>

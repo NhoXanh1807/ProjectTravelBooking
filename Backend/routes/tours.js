@@ -2,9 +2,9 @@ import express from 'express'
 import {createTour, deleteTour, getSingleTour,getAllTour, updateTour, getTourBySearch,getTourByAdvancedSearch,getFeatureTour,getTourCount} from '../Controllers/TourController.js'
 import {verifyAdmin, verifyUser }from "../utils/verifyToken.js";
 const router = express.Router();
-router.post("/",verifyAdmin, createTour);
-router.put("/:id",verifyAdmin, updateTour);
-router.delete("/:id",verifyAdmin, deleteTour);
+router.post("/", createTour);
+router.put("/:id", updateTour);
+router.delete("/:id", deleteTour);
 router.get("/:id",  getSingleTour);
 router.get("/",getAllTour);
 router.get("/search/getTourBySearch",getTourBySearch);
