@@ -10,8 +10,11 @@ import useFetch from "./../../hooks/useFetch";
 function Tours({ isLoggedIn, setIsLoggedIn }) {
     const [page, setPage] = useState(0);  // Start page at 1 for pagination
     const itemsPerPage = 10; //  // State lưu trang hiện tại
-    const { data: tours, error, loading } = useFetch(`${BASE_URL}/tours?page=${page}`); // Gọi API với phân trang
-
+    const { data: tours, error, loading } = useFetch(`${BASE_URL}/tours?page=${page}`); // Gọi API với phân trangal
+    console.log("Fetched tours:", tours);
+    if (error) {
+        console.error("Error fetching tours:", error); 
+    }
     const [selectedTour, setSelectedTour] = useState(null);
     const [totalTours, setTotalTours] = useState(0); // Total number of tours from API
 
@@ -60,7 +63,7 @@ function Tours({ isLoggedIn, setIsLoggedIn }) {
                             <Tourbar
                                 key={tour._id}
                                 item={tour}
-                                onClick={() => handleItemClick(tour)}
+                                onClick={() => handleItemClick(tours)}
                                 isLoggedIn={isLoggedIn} // Truyền isLoggedIn vào Tourbar
                                 setIsLoggedIn={setIsLoggedIn} // Truyền setIsLoggedIn vào Tourbar
                             />

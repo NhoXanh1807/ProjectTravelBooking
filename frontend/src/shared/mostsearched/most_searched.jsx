@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import React, { useState, useEffect } from 'react';
 import './mostSearched.css';
 import TourCard from './tourcard';
-import tourData from '../../assets/data/tour';
 import ToursDetail from '../../Pages/Tours/ToursDetail';
+import useFetch from '../../hooks/useFetch';
+import { BASE_URL } from '../../utils/config';
 
-const MostSearched = ({ isLoggedIn, setIsLoggedIn }) => { // Nhận isLoggedIn và setIsLoggedIn qua props
+const MostSearched = ({ isLoggedIn, setIsLoggedIn }) => {
     const [selectedTour, setSelectedTour] = useState(null);
     const [isOpen, setIsOpen] = useState(false);
-
+    const { data: tours, loading, error } = useFetch(`${BASE_URL}/tours`);
+    console.log("Fetched tours data:", tours);
     const handleItemClick = (tour) => {
         setSelectedTour(tour);
         setIsOpen(true);
@@ -17,18 +18,29 @@ const MostSearched = ({ isLoggedIn, setIsLoggedIn }) => { // Nhận isLoggedIn v
     return (
         <section className="tours-section">
             <h2 className="tours-section__title">Most searched tours</h2>
-            <div className="tour-cards" id="tour-cards">
-                {tourData.map((tour) => (
-                    <TourCard
-                        key={tour._id}
-                        item={tour}
-                        onClick={() => handleItemClick(tour)}
-                        isLoggedIn={isLoggedIn} // Truyền isLoggedIn vào TourCard
-                        setIsLoggedIn={setIsLoggedIn} // Truyền setIsLoggedIn vào TourCard
-                    />
-                ))}
-            </div>
-            
+
+            {loading ? (
+                <p>Loading...</p>
+            ) : error ? (
+                <p>Error loading tours: {error}</p>
+            ) : (
+                <div className="tour-cards" id="tour-cards">
+                    {tours.length > 0 ? (
+                        tours.map((tour) => (
+                            <TourCard
+                                key={tour._id}
+                                item={tour}
+                                onClick={() => handleItemClick(tour)}
+                                isLoggedIn={isLoggedIn} // Pass login state to TourCard
+                                setIsLoggedIn={setIsLoggedIn}
+                            />
+                        ))
+                    ) : (
+                        <p>No most searched tours available.</p>
+                    )}
+                </div>
+            )}
+
             {isOpen && selectedTour && (
                 <ToursDetail
                     tour={selectedTour}
