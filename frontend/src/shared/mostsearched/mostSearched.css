@@ -1,218 +1,251 @@
 @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-:root{
-    --font:"Be Vietnam Pro", sans-serif;
+:root {
+    --font: "Be Vietnam Pro", sans-serif;
+    --primary-color: #00171F;
+    --secondary-color: #00A7E7;
+    --button-hover: #003c8c;
+    --background-color: #FDFDFD;
+    --shadow-color: rgba(0, 0, 0, 0.0784313725);
 }
-
 
 * {
     box-sizing: border-box;
-  }
-  
-  body {
+}
+
+body {
     margin: 0;
-    font-family: "Be Vietnam Pro", sans-serif;
+    font-family: var(--font);
     line-height: 1.4;
-    background-color: #FDFDFD;
+    background-color: var(--background-color);
     display: flex;
     flex-direction: column;
     justify-content: center;
-  }
-  a {
+}
+
+a {
     text-decoration: none;
-  }
-  .tours-section{
+}
+
+.tours-section {
     width: 90%;
-    
-  }
- .tours-section .tours-section__title{
+}
+
+.tours-section__title {
     font-weight: 700;
     font-size: 48px;
-    color: #00171F;
+    color: var(--primary-color);
     margin-top: 0;
     margin-bottom: 30px;
     text-transform: capitalize;
- }
+}
 
- .tours-section {
-  margin-top: 30px;
-  }
+.tours-section {
+    margin-top: 30px;
+}
 
-  .tours-section .tour-cards {
+.tours-section .tour-cards {
     display: flex;
     gap: 20px;
-    overflow-x: auto; /* Hides the scrollbar */
+    overflow-x: hidden;
     padding: 10px;
-    scroll-behavior: smooth; /* Smooth scrolling when JS triggers it */
-    white-space: nowrap; /* Prevent line breaks */
+    scroll-behavior: smooth;
+    white-space: nowrap;
+    transition: transform 0.3s ease; /* Smooth transition for sliding */
 }
-.tours-section .tour-cards .tour-card-link{
-  width: auto;
+
+.tours-section .tour-cards .tour-card-link {
+    width: auto;
 }
+
 .tours-section .tour-cards .tour-item {
-
     display: inline-block;
-    width: 250px; /* Điều chỉnh giá trị này để thu hẹp */
-    min-width: 180px; /* Đảm bảo kích thước tối thiểu */
-    max-width: 250px; /* Đặt kích thước tối đa (nếu cần) */
+    width: 250px;
+    min-width: 180px;
+    max-width: 250px;
 }
 
-
-  
 .tour-item {
-  background-color: #FDFDFD;
-  box-shadow: 0px 4px 28px -2px rgba(0, 0, 0, 0.0784313725);
-  padding: 8px 8px 0 8px;
-  border-radius: 12px;
+    background-color: var(--background-color);
+    box-shadow: 0px 4px 28px -2px var(--shadow-color);
+    padding: 8px;
+    border-radius: 12px;
+    transition: transform 0.3s ease; /* Smooth transition on hover */
 }
+
+.tour-item:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
 .tour-item__image {
-  border-radius: 10px;
-  overflow: hidden;
-  margin-bottom: 8px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 8px;
 }
+
 .tour-item__image img {
-  width: 100%;
-  aspect-ratio: 1/1;
-  object-fit: cover;
-  display: block;
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    display: block;
 }
+
 .tour-item__content {
-  padding: 8px 8px 20px 8px;
+    padding: 8px 8px 20px 8px;
 }
+
 .tour-item__title {
-  margin-top: 0;
-  padding-bottom: 10px;
-  font-weight: 700;
-  font-size: 16px;
-  color: #00171F;
-  margin-bottom: 4px;
-  overflow: hidden;
-  /* overflow: hidden;
-  text-overflow: ellipsis;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  display: -webkit-box; */
+    margin-top: 0;
+    padding-bottom: 10px;
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--primary-color);
+    margin-bottom: 4px;
 }
-.tour-item__title a{
-  text-decoration: none;
-  color: #00171F ;
+
+.tour-item__title a {
+    text-decoration: none;
+    color: var(--primary-color);
 }
-.tour-item__title a:hover{
-  color: #00A7E7;
+
+.tour-item__title a:hover {
+    color: var(--secondary-color);
 }
+
 .tour-item__info {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px 26px;
-  margin-bottom: 4px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 26px;
+    margin-bottom: 4px;
 }
+
 .tour-item__info-item {
-  color: #667479;
-  font-weight: 500;
-  font-size: 12px;
-  position: relative;
+    color: #667479;
+    font-weight: 500;
+    font-size: 12px;
+    position: relative;
 }
-.location-info{
-  overflow: hidden; /* Prevents overflowing content */
-  text-overflow: ellipsis; /* Adds ellipsis for overflow */
-  white-space: nowrap; /* Prevents text from wrapping */
-  max-width: 100%; /* Ensures it doesn't exceed the container width */
+
+.location-info {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
 }
+
 .tour-item__info-item b {
-  font-weight: 700;
+    font-weight: 700;
 }
+
 .tour-item__info-item::after {
-  content: "";
-  width: 3px;
-  height: 3px;
-  display: inline-block;
-  background-color: #667479;
-  border-radius: 50%;
-  position: absolute;
-  top: 6px;
-  right: -13px;
+    content: "";
+    width: 3px;
+    height: 3px;
+    display: inline-block;
+    background-color: #667479;
+    border-radius: 50%;
+    position: absolute;
+    top: 6px;
+    right: -13px;
 }
+
 .tour-item__info-item:last-child::after {
-  display: none;
+    display: none;
 }
+
 .tour-item__price {
-  font-weight: 700;
-  font-size: 14px;
-  color: #00171F;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--primary-color);
 }
 
+/* Slide Button Controls */
+.slide-bar-controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
 
-.MostSearchTours .tour-item img {
-  width: 264px;
-  height: 264px;
+.slide-bar-controls button {
+    background-color: #fff;
+    border: 1px solid var(--primary-color);
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+}
+
+.slide-bar-controls button:hover {
+    background-color: var(--primary-color);
+    color: #fff;
 }
 
 /* Modal Styles */
 .modal {
-  display: block; /* Ensure modal is visible */
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1000;
-  background-color: rgba(0, 0, 0, 0.5);
-  width: 100%;
-  height: 100%;
+    display: block;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
 }
 
 .modal-content {
-  position: relative;
-  background-color: #fff;
-  margin: auto;
-  padding: 20px;
-  border-radius: 10px;
-  max-width: 600px;
-  z-index: 1001;
+    position: relative;
+    background-color: #fff;
+    margin: auto;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 600px;
+    z-index: 1001;
 }
 
-
-
 .modal-header {
-  display: flex;
-  gap: 20px;
-  flex-direction: column;
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
 }
 
 .modal-image {
-  width: 200px;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 10px;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
 }
 
 .modal-info p {
-  margin: 10px 0;
-  font-size: 16px;
+    margin: 10px 0;
+    font-size: 16px;
 }
 
 .book-btn {
-  background-color: #0056b3;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  align-self: center;
+    background-color: #0056b3;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    align-self: center;
 }
 
 .book-btn:hover {
-  background-color: #003c8c;
+    background-color: var(--button-hover);
 }
 
 /* Close Button */
 .close-btn {
-  font-size: 30px;
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  cursor: pointer;
+    font-size: 30px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
 }
 
 .close-btn:hover {
-  color: red;
+    color: red;
 }

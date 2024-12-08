@@ -1,7 +1,7 @@
 import './tourbar_three.css';
 import { Link } from 'react-router-dom';
 
-function Tourbarthree({ item, booking, isSelected, onClick }) {
+function Tourbarthree({ item, isSelected, onClick }) {
     const { TourName, Locations, StartDate, EndDate, Price, LanguageOffers, TourStatus } = item;
     const formattedPrice = new Intl.NumberFormat('vi-VN').format(Price);
 

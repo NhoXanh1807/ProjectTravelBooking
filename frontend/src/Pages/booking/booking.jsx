@@ -1,35 +1,118 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "./booking.css";
 import Tourbarthree from "../../shared/mostsearched/tourbar_three";
-import tourData from "../../assets/data/tour";
-import TravelerHeader from "../../Components/Headers/TravelerHeader/TravelerHeader";
 import Tourbarfourth from "../../shared/mostsearched/tourbar_four";
-import bookingData from "../../assets/data/booking";
+import TravelerHeader from "../../Components/Headers/TravelerHeader/TravelerHeader";
 import BookingHeader from "../../Components/Headers/TravelerHeader/BookingHeader";
 import Footer from "../../Components/Footers/Footer";
-
+import { BASE_URL } from "../../utils/config";
+import { jwtDecode } from "jwt-decode";
 
 function TourBooking({ isLoggedIn, setIsLoggedIn }) {
-    const [selectedTour, setSelectedTour] = useState(null); // Track the selected tour
-    const [selectedBooking, setSelectedBooking] = useState(null); // Track the selected booking
-    const [totalPrice, setTotalPrice] = useState(0); // Track the total price
-    const [activeSection, setActiveSection] = useState("unpaid"); // Track the active section ("unpaid" or "paid")
+    const [unpaidBookings, setUnpaidBookings] = useState([]);
+    const [paidBookings, setPaidBookings] = useState([]);
+    const [selectedTour, setSelectedTour] = useState(null);
+    const [selectedBooking, setSelectedBooking] = useState(null);
+    const [totalPrice, setTotalPrice] = useState(0);
+    const [activeSection, setActiveSection] = useState("unpaid");
     const navigate = useNavigate();
 
-    const handleItemClick = (tour, booking) => {
-        setSelectedTour(tour); // Update the selected tour
-        setSelectedBooking(booking); // Update the selected booking
-        setTotalPrice(tour.Price); // Update the total price when a tour is selected
+    const getToken = () => {
+        const token = localStorage.getItem("token");
+        console.log("Token:", token);
+        return token;
+    };
+
+    const getTravelerID = () => {
+        const token = getToken();
+        if (token) {
+            try {
+                const decodedToken = jwtDecode(token);
+                console.log("Decoded Token:", decodedToken);
+                return decodedToken.id; // Make sure "id" is the correct field in your token payload
+            } catch (error) {
+                console.error("Error decoding token:", error);
+            }
+        }
+        return null;
+    };
+
+    useEffect(() => {
+        const fetchBookings = async () => {
+            try {
+                const token = getToken();
+                if (!token) {
+                    console.error("Token not found");
+                    return;
+                }
+
+                const TravelerID = getTravelerID();
+                if (!TravelerID) {
+                    console.error("TravelerID not found in token");
+                    return;
+                }
+
+                // Fetch unpaid bookings
+                const unpaidResponse = await fetch(`${BASE_URL}/bookings/user/unpaid/${TravelerID}`, {
+                    method: "GET",
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                        "Content-Type": "application/json",
+                    },
+                });
+
+                if (!unpaidResponse.ok) {
+                    console.error("Failed to fetch unpaid bookings", await unpaidResponse.text());
+                    return;
+                }
+
+                const unpaidData = await unpaidResponse.json();
+                console.log("Unpaid Bookings Data:", unpaidData);
+                setUnpaidBookings(Array.isArray(unpaidData) ? unpaidData : []);
+
+                // Fetch paid bookings
+                const paidResponse = await fetch(`${BASE_URL}/bookings/user/paid/${TravelerID}`, {
+                    method: "GET",
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                        "Content-Type": "application/json",
+                    },
+                });
+
+                if (!paidResponse.ok) {
+                    console.error("Failed to fetch paid bookings", await paidResponse.text());
+                    return;
+                }
+
+                const paidData = await paidResponse.json();
+                console.log("Paid Bookings Data:", paidData);
+                setPaidBookings(Array.isArray(paidData) ? paidData : []);
+            } catch (error) {
+                console.error("Error fetching bookings:", error);
+            }
+        };
+
+        fetchBookings();
+    }, []);
+
+   const handleItemClick = (tour, booking) => {
+        console.log("Selected Tour:", tour);
+        console.log("Selected Booking:", booking);
+        setSelectedTour(tour);
+        setSelectedBooking(booking);
+        setTotalPrice(tour.Price);
     };
 
     const handleLogout = () => {
+        console.log("User logged out");
         setIsLoggedIn(false);
-        navigate("/"); // Redirect to the homepage
+        navigate("/");
     };
 
     const toggleSection = (section) => {
-        setActiveSection(section); // Toggle between "unpaid" and "paid" sections
+        console.log( "Active Section Changed:", section);
+        setActiveSection(section);
     };
 
     return (
@@ -56,63 +139,36 @@ function TourBooking({ isLoggedIn, setIsLoggedIn }) {
             {/* Conditional rendering based on activeSection */}
             {activeSection === "unpaid" && (
                 <div className="tourBookingHeader-content-unpaid">
-                    {bookingData
-                        .filter((booking) => booking.BookingStatus === "Pending") // Filter only pending bookings
-                        .map((booking) => {
-                            const tour = tourData.find((tour) => tour._id === booking.TourID);
-
-                            if (tour && tour.TourStatus === "Available") {
-                                return (
-                                    <div key={tour._id}>
-                                        <Tourbarthree
-                                            item={tour}
-                                            booking={booking}
-                                            isSelected={selectedTour === tour} // Pass selection status
-                                            onClick={() => handleItemClick(tour, booking)} // Handle item selection
-                                        />
-                                    </div>
-                                );
-                            }
-
-                            return (
-                                <div key={tour._id}>
-                                    <Tourbarfourth
-                                        item={tour}
-                                        booking={booking}
-                                        isSelected={selectedTour === tour} // Pass selection status
-                                        onClick={() => handleItemClick(tour, booking)} // Handle item selection
-                                    />
-                                </div>
-                            );
-                        })}
+                    {unpaidBookings.map((tour) => (
+                        <Tourbarthree
+                            key={tour.BookingID}
+                            item={tour}
+                            isSelected={selectedTour === tour}
+                            onClick={() => handleItemClick(tour)}
+                        />
+                    ))}
                 </div>
             )}
 
             {activeSection === "paid" && (
                 <div className="tourBookingHeader-content-paid">
-                    {bookingData
-                        .filter((booking) => booking.BookingStatus === "Confirmed") // Filter only confirmed bookings
-                        .map((booking) => {
-                            const tour = tourData.find((tour) => tour._id === booking.TourID);
-
-                            return (
-                                <div key={tour._id}>
-                                    <Tourbarfourth
-                                        item={tour}
-                                        booking={booking}
-                                        isSelected={selectedTour === tour} // Pass selection status
-                                        onClick={() => handleItemClick(tour, booking)} // Handle item selection
-                                    />
-                                </div>
-                            );
-                        })}
+                    {paidBookings.map((tour) => (
+                        <Tourbarfourth
+                            key={tour.BookingID}
+                            item={tour}
+                            isSelected={selectedTour === tour}
+                            onClick={() => handleItemClick(tour)}
+                        />
+                    ))}
                 </div>
             )}
 
             <div className="tourBookingHeader-foot">
                 <div className="tourBookingHeader-foot-content">TOTAL PAYMENT:</div>
                 <div className="tourBookingHeader-foot-price">
-                    {totalPrice > 0 ? `${new Intl.NumberFormat('vi-VN').format(totalPrice)} VND` : "0"}
+                    {totalPrice > 0
+                        ? `${new Intl.NumberFormat("vi-VN").format(totalPrice)} VND`
+                        : "0"}
                 </div>
                 <div className="tourBookingHeader-foot-btn">
                     <Link

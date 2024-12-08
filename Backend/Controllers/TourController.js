@@ -61,8 +61,7 @@ export const getAllTour = async (req,res) => {
     
     try {
         const tours = await Tour.find({})
-        .skip(page * 8) // Bỏ qua các tour của các trang trước
-        .limit(8);      // Giới hạn số tour trả về trong mỗi trang
+        
         res.status(200).json({success:true,count:tours.length,message:'Successfully ' ,
             data:tours
         });

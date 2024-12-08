@@ -1,4 +1,5 @@
 import Booking from '../models/Booking.js';
+import Tour from '../models/Tour.js';
 
 // Tạo booking mới
 export const createBooking = async (req, res) => {
@@ -55,51 +56,126 @@ export const getAllBookings = async (req, res) => {
 };
 
 // Lấy danh sách booking của 1 user
-export const getUserBookings = async (req, res) => {
+
+export const getUserUnpaidBookings = async (req, res) => {
   try {
-    const { TravelerID } = req.params;
+      // Lấy TravelerID từ request params hoặc query string
+      const { TravelerID } = req.params;
 
-    const bookings = await Booking.find({ TravelerID })
-      
+      // Tìm tất cả các booking của traveler với trạng thái 'Pending'
+      const unpaidBookings = await Booking.find({
+          TravelerID: TravelerID,
+          BookingStatus: 'Pending',
+      }).populate('TourID'); // Populate thông tin tour từ collection Tour
 
-    res.status(200).json({
-      success: true,
-      data: bookings,
-    });
-  } catch (err) {
-    res.status(500).json({
-      success: false,
-      message: 'Failed to fetch user bookings!',
-      error: err.message,
-    });
+      if (!unpaidBookings || unpaidBookings.length === 0) {
+          return res.status(404).json({ message: 'No unpaid bookings found for this traveler' });
+      }
+
+      // Tạo một mảng kết quả để gửi lại
+      const result = unpaidBookings.map(booking => {
+          const tour = booking.TourID; // Dữ liệu tour đã được populate vào booking
+
+          return {
+
+            BookingID: booking._id,
+            TourID: tour._id,
+            LanguageOffers: tour.LanguageOffers,
+            BookingDate: booking.BookingDate,
+            BookingStatus: booking.BookingStatus,
+            TotalPrice: booking.TotalPrice,
+            TourName: tour.TourName,
+            TourStatus: tour.TourStatus,
+            StartDate: tour.StartDate,
+            EndDate: tour.EndDate,
+            AvailableSeats: tour.AvailableSeats,
+            Locations: tour.Locations, // Gộp các địa điểm thành một chuỗi
+            Price: tour.Price, //
+          };
+      });
+
+      // Trả về kết quả cho người dùng
+      res.status(200).json(result);
+  } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Error fetching unpaid bookings' });
+  }
+};
+
+export const getUserPaidBookings = async (req, res) => {
+  try {
+      // Lấy TravelerID từ request params hoặc query string
+      const { TravelerID } = req.params;
+    
+      // Tìm tất cả các booking của traveler với trạng thái 'Pending'
+      const paidBookings = await Booking.find({
+          TravelerID: TravelerID,
+          BookingStatus: { $in: ['Confirmed', 'Cancelled'] },
+      }).populate('TourID'); // Populate thông tin tour từ collection Tour
+
+      if (!paidBookings || paidBookings.length === 0) {
+          return res.status(404).json({ message: 'No paid bookings found for this traveler' });
+      }
+
+      // Tạo một mảng kết quả để gửi lại
+      const result = paidBookings.map(booking => {
+          const tour = booking.TourID; // Dữ liệu tour đã được populate vào booking
+
+          return {
+           
+            BookingID: booking._id,
+            TourID: tour._id,
+            LanguageOffers: tour.LanguageOffers,
+            BookingDate: booking.BookingDate,
+            BookingStatus: booking.BookingStatus,
+            TotalPrice: booking.TotalPrice,
+            TourName: tour.TourName,
+            TourStatus: tour.TourStatus,
+            StartDate: tour.StartDate,
+            EndDate: tour.EndDate,
+            AvailableSeats: tour.AvailableSeats,
+            Locations: tour.Locations, // Gộp các địa điểm thành một chuỗi
+            Price: tour.Price, 
+          };
+      });
+
+      // Trả về kết quả cho người dùng
+      res.status(200).json(result);
+  } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Error fetching paid bookings' });
   }
 };
 
 // Hủy booking
 export const cancelBooking = async (req, res) => {
   try {
-    const { bookingId } = req.params;
+    // Lấy ID của booking từ tham số URL hoặc body
+    const id = req.params.id
 
-    const booking = await Booking.findById(bookingId);
+    // Tìm booking trong cơ sở dữ liệu
+    const booking = await Booking.findById(id);
+
+    // Kiểm tra nếu không tìm thấy booking
     if (!booking) {
-      return res.status(404).json({ message: 'Booking not found!' });
+      return res.status(404).json({ message: "Booking not found" });
     }
 
-    // Cập nhật trạng thái booking thành "Cancelled"
+    // Kiểm tra nếu trạng thái không phải là confirmed
+    if (booking.BookingStatus !== 'Confirmed') {
+      return res.status(400).json({ message: "Booking is not in confirmed status" });
+    }
+
+    // Thay đổi trạng thái của booking
     booking.BookingStatus = 'Cancelled';
     await booking.save();
 
-    res.status(200).json({
-      success: true,
-      message: 'Booking cancelled successfully!',
-      data: booking,
-    });
-  } catch (err) {
-    res.status(500).json({
-      success: false,
-      message: 'Failed to cancel booking!',
-      error: err.message,
-    });
+    // Trả về phản hồi thành công
+    return res.status(200).json({ message: "Booking cancelled successfully", booking });
+  } catch (error) {
+    // Xử lý lỗi
+    console.error(error);
+    return res.status(500).json({ message: "Server error" });
   }
 };
 
