@@ -47,7 +47,7 @@ a {
 .tours-section .tour-cards {
     display: flex;
     gap: 20px;
-    overflow-x: hidden;
+    overflow-x: auto;
     padding: 10px;
     scroll-behavior: smooth;
     white-space: nowrap;

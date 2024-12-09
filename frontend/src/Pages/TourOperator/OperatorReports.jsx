@@ -72,10 +72,10 @@ const Reports = () => {
               {currentData.map((report, index) => (
                 <tr key={index}>
                   <td>{report._id}</td>
-                  <td>{report.TravelerID?.name || "N/A"}</td>
-                  <td>{report.TourID?.name || "N/A"}</td>
-                  <td>{report.status || "N/A"}</td>
-                  <td>{new Date(report.bookingDate).toLocaleDateString()}</td>
+                  <td>{report.Name || "N/A"}</td>
+                  <td>{report.TourName|| "N/A"}</td>
+                  <td>{report.BookingStatus || "N/A"}</td>
+                  <td>{new Date(report.BookingDate).toLocaleDateString()}</td>
                   <td>
                     <i
                       className="fa-solid fa-circle-info"

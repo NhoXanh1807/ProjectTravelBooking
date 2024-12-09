@@ -37,14 +37,23 @@ export const createBooking = async (req, res) => {
 // Lấy danh sách tất cả booking (chỉ dành cho admin)
 export const getAllBookings = async (req, res) => {
   try {
+    // Populate thêm thông tin từ TravelerID và TourID
     const bookings = await Booking.find()
-      .populate('TravelerID', 'name email') // Populate thêm thông tin user
-      .populate('TourID', 'name location') // Populate thêm thông tin tour
+      .populate('TravelerID', 'FirstName LastName') // Chỉ lấy FirstName và LastName từ Traveler
+      .populate('TourID', 'TourName') // Chỉ lấy TourName từ Tour
       .exec();
+
+    // Tạo dữ liệu với các trường được gộp
+    const transformedBookings = bookings.map(booking => ({
+      _id: booking._id,
+      Name: `${booking.TravelerID?.FirstName || ''} ${booking.TravelerID?.LastName || ''}`.trim(),
+      TourName: booking.TourID?.TourName || '',
+      ...booking._doc, // Sao chép các trường khác
+    }));
 
     res.status(200).json({
       success: true,
-      data: bookings,
+      data: transformedBookings,
     });
   } catch (err) {
     res.status(500).json({
@@ -54,6 +63,7 @@ export const getAllBookings = async (req, res) => {
     });
   }
 };
+
 
 // Lấy danh sách booking của 1 user
 
