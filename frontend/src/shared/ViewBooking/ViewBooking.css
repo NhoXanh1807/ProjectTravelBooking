@@ -113,3 +113,26 @@
   gap: 30px;
   border-bottom: 1px solid #667479;
 }
+.info-footer{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.info-footer-evidence{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  
+}
+.info-footer-evidence button{
+  width: auto;
+  height: auto;
+  padding: 12px 28px 12px 28px;
+  border-radius: 57px;
+}
+.info-footer-evidence .Approved{
+  background-color: #1488DB;
+}
+.info-footer-evidence .Disapproved{
+  background-color:#E9456F;
+}

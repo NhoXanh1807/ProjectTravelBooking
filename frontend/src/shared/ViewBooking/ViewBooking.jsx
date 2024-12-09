@@ -6,7 +6,7 @@ const ViewBooking = () => {
   const location = useLocation();
   const report = location.state; // Retrieve the passed data
   const navigate = useNavigate();
-
+  console.log(report)
   if (!report) {
     return <div>No booking details available.</div>;
   }
@@ -53,6 +53,12 @@ const ViewBooking = () => {
             <div className="info-refund">
               <div className="info-content">Refund ID:</div>
               <div className="info-main">{report.RefundID || "N/A"}</div>
+            </div>
+            <div className="info-footer">
+              <div className="info-footer-evidence">
+                  <button className="Approved">Approved</button>
+                  <button className="Disapproved">Disapproved</button>
+              </div>
             </div>
           </div>
         </div>
