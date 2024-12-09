@@ -36,6 +36,10 @@ const paymentSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Refund', // Tham chiếu đến Refund collection nếu có hoàn tiền
         default: null
+    },
+    EvidenceImage: {
+        type: String, // URL của hình ảnh bằng chứng thanh toán
+        default: null // Giá trị mặc định là null nếu không có hình ảnh
     }
 }, 
 { timestamps: true });
