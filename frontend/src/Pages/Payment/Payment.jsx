@@ -47,8 +47,30 @@ const PaymentPage = () => {
         }
     };
 
-    const handleConfirm = () => {
+    const updateBookingStatus = async () => {
+        try {
+            const response = await fetch(`${BASE_URL}/bookings/inprogress/${tour.BookingID}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to update booking status.');
+            }
+
+            const data = await response.json();
+            console.log('Booking status updated:', data);
+        } catch (error) {
+            console.error('Error updating booking status:', error);
+        }
+    };
+
+    const handleConfirm = async () => {
         setIsPaid(true); // Đặt trạng thái đã thanh toán
+        await updateBookingStatus(); // Cập nhật trạng thái booking
         setTimeout(() => {
             navigate('/home'); // Chuyển hướng sau 2 giây
         }, 2000);

@@ -6,6 +6,7 @@ import {
   cancelBooking,
   updateBookingStatus,
   getUserPaidBookings,
+  inProgessBooking,
 } from '../Controllers/BookingController.js';
 import { verifyAdmin, verifyUser } from '../utils/verifyToken.js';
 
@@ -22,7 +23,7 @@ router.get('/user/unpaid/:TravelerID', getUserUnpaidBookings);
 router.get('/user/paid/:TravelerID', getUserPaidBookings);
 // Hủy booking (yêu cầu người dùng đăng nhập)
 router.put('/cancel/:id', cancelBooking);
-
+router.put('/inprogress/:id',inProgessBooking);
 // Cập nhật trạng thái booking (chỉ admin có quyền)
 router.patch('/:bookingId',  updateBookingStatus);
 

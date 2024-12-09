@@ -226,3 +226,33 @@ export const updateBookingStatus = async (req, res) => {
 };
 
 
+export const inProgessBooking = async (req, res) => {
+  try {
+    // Lấy ID của booking từ tham số URL hoặc body
+    const id = req.params.id
+
+    // Tìm booking trong cơ sở dữ liệu
+    const booking = await Booking.findById(id);
+
+    // Kiểm tra nếu không tìm thấy booking
+    if (!booking) {
+      return res.status(404).json({ message: "Booking not found" });
+    }
+
+    // Kiểm tra nếu trạng thái không phải là confirmed
+    if (booking.BookingStatus !== 'Pending') {
+      return res.status(400).json({ message: "Booking is not in confirmed status" });
+    }
+
+    // Thay đổi trạng thái của booking
+    booking.BookingStatus = 'In Progress';
+    await booking.save();
+
+    // Trả về phản hồi thành công
+    return res.status(200).json({ message: "Booking cancelled successfully", booking });
+  } catch (error) {
+    // Xử lý lỗi
+    console.error(error);
+    return res.status(500).json({ message: "Server error" });
+  }
+};
