@@ -120,3 +120,9 @@ a {
     font-weight: 700;
     color: #E5A13D;
 }
+.tour-barthree .tour-barthree-foot .in-progress{
+    font-style: italic;
+    font-size: 24px;
+    color: #E5A13D;
+    font-weight: 700;
+}

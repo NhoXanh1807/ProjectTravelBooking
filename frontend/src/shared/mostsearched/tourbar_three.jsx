@@ -2,21 +2,40 @@ import './tourbar_three.css';
 import { Link } from 'react-router-dom';
 
 function Tourbarthree({ item, isSelected, onClick }) {
-    const { TourName, Locations, StartDate, EndDate, Price, LanguageOffers, TourStatus } = item;
+    const { TourName, Locations, StartDate, EndDate, Price, LanguageOffers, TourStatus, BookingStatus } = item;
     const formattedPrice = new Intl.NumberFormat('vi-VN').format(Price);
+
+    // Function to render booking status button
+    const renderBookingStatus = () => {
+        if (item) {
+            if (BookingStatus === "Pending" && TourStatus === "Available") {
+                return null;
+            } else if (BookingStatus === "In Progress" && TourStatus === "Available") {
+                return (
+                    <div className="in-progress">
+                        In Progress
+                    </div>
+                );
+            }
+        }
+        return null;
+    };
 
     return (
         <div className="tour-barthree">
             <div className="tour-barthree-header">
-                <div className="tour-barthree-headerName">
-                    <input
-                        type="radio"
-                        name="tourSelection"
-                        checked={isSelected} // Check the radio button if selected
-                        onChange={onClick} // Trigger the selection change
-                    />
-                    {TourName}
-                </div>
+            <div className="tour-barthree-headerName">
+    {!(BookingStatus === "In Progress" && TourStatus === "Available") && (
+        <input
+            type="radio"
+            name="tourSelection"
+            checked={isSelected} // Check the radio button if selected
+            onChange={onClick} // Trigger the selection change
+        />
+    )}
+    {TourName}
+</div>
+
                 <div className="tour-barthree-headerPrice">{formattedPrice} VND</div>
             </div>
             <div className="tour-barthree-content">
@@ -41,6 +60,7 @@ function Tourbarthree({ item, isSelected, onClick }) {
             </div>
             <div className="tour-barthree-foot">
                 <div className="tour-barthree-footStatus">{TourStatus}</div>
+                {renderBookingStatus()}
             </div>
         </div>
     );

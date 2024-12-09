@@ -75,7 +75,7 @@ export const getUserUnpaidBookings = async (req, res) => {
       // Tìm tất cả các booking của traveler với trạng thái 'Pending'
       const unpaidBookings = await Booking.find({
           TravelerID: TravelerID,
-          BookingStatus: 'Pending',
+          BookingStatus: { $in: ['Pending', 'In Progress'] },
       }).populate('TourID'); // Populate thông tin tour từ collection Tour
 
       if (!unpaidBookings || unpaidBookings.length === 0) {

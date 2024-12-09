@@ -4,7 +4,7 @@ const bookingSchema = new mongoose.Schema({
     BookingStatus: {
         type: String,
         enum: {
-            values: ['Confirmed', 'Pending', 'Cancelled'],
+            values: ['Confirmed', 'Pending', 'Cancelled','In Progress'],
             message: '{VALUE} is not a valid booking status.'
         },
         default: 'Pending' // Mặc định là Pending khi tạo booking
