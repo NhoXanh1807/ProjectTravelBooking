@@ -101,6 +101,7 @@ export const getUserUnpaidBookings = async (req, res) => {
             AvailableSeats: tour.AvailableSeats,
             Locations: tour.Locations, // Gộp các địa điểm thành một chuỗi
             Price: tour.Price, //
+            PaymentID: booking.PaymentID,
           };
       });
 
@@ -146,6 +147,7 @@ export const getUserPaidBookings = async (req, res) => {
             AvailableSeats: tour.AvailableSeats,
             Locations: tour.Locations, // Gộp các địa điểm thành một chuỗi
             Price: tour.Price, 
+            PaymentID: booking.PaymentID,
           };
       });
 

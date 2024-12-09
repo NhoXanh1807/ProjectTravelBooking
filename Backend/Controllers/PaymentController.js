@@ -77,3 +77,18 @@ export const getAllPayments = async (req, res) => {
         res.status(500).json({ success: false, message: "Lỗi khi lấy danh sách Payment.", error: err.message });
     }
 };
+
+export const getPaymentByBookingId = async (req, res) => {
+    const { BookingID } = req.params;
+
+    try {
+        const payment = await Payment.findOne({ BookingID }).populate('BookingID');
+        if (!payment) {
+            return res.status(404).json({ success: false, message: "Không tìm thấy Payment theo BookingID." });
+        }
+
+        res.status(200).json({ success: true, data: payment });
+    } catch (err) {
+        res.status(500).json({ success: false, message: "Lỗi khi lấy Payment theo BookingID.", error: err.message });
+    }
+};

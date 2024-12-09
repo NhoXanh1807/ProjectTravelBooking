@@ -36,7 +36,7 @@ app.use("/api/v1/auth",authRoute);
 app.use('/api/v1/tours',tourRoute);
 app.use("/api/v1/users",userRoute);
 app.use("/api/v1/bookings",bookingRoute);
-app.use('/api//v1/payments', paymentRoute);
+app.use('/api/v1/payments', paymentRoute);
 app.listen(port, () => {
     connect();
     console.log("Server is running on port" , port);

@@ -4,13 +4,14 @@ import {
     getPaymentById,
     updatePayment,
     deletePayment,
-    getAllPayments
+    getAllPayments,
+    getPaymentByBookingId
 } from '../Controllers/PaymentController.js';
 
 import { verifyUser, verifyAdmin } from "../utils/verifyToken.js";
 
 const router = express.Router();
-
+router.get('/booking/:BookingID', getPaymentByBookingId);
 // Tạo mới Payment (Chỉ Admin)
 router.post("/", verifyAdmin, createPayment);
 

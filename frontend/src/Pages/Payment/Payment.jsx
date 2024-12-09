@@ -1,25 +1,45 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import './Payment.css';
 import BookingHeader from '../../Components/Headers/TravelerHeader/BookingHeader';
 import Tourbarfive from '../../shared/mostsearched/tourbar_five';
-import paymentData from '../../assets/data/payment';
+import { BASE_URL } from '../../utils/config';
 
 const PaymentPage = () => {
     const location = useLocation();
     const navigate = useNavigate(); // Dùng để chuyển hướng sau khi xác nhận
     const { tour } = location.state || {};
 
-    const operator = { bank: 'Vietcombank', accountNumber: '123456789', accountName: 'Nguyen Van A' };
+    const operator = { bank: 'OCB', accountNumber: '123456789', accountName: 'Nguyen Ba Nhat Quang' };
     const bankImageUrl = "https://vcb-livechat.fpt.ai/v36/src/img/vcb-logo.png";
 
     const [image, setImage] = useState(null);
     const [isPaid, setIsPaid] = useState(false); // Trạng thái thanh toán thành công
+    const [paymentRecord, setPaymentRecord] = useState(null); // Dữ liệu thanh toán
+    const [loading, setLoading] = useState(true); // Trạng thái tải dữ liệu
+    const [error, setError] = useState(null); // Lỗi khi fetch dữ liệu
 
-    const paymentRecord = paymentData.find((payment) => payment.TourID === tour?._id);
-    const paymentDate = paymentRecord
-        ? new Date(paymentRecord.PaymentDate).toLocaleDateString('en-GB')
-        : "Not set";
+    useEffect(() => {
+        if (!tour) return;
+
+        // Fetch thông tin thanh toán dựa trên BookingID
+        const fetchPayment = async () => {
+            try {
+                const response = await fetch(`${BASE_URL}/payments/booking/${tour.BookingID}`);
+                if (!response.ok) {
+                    throw new Error("Failed to fetch payment data.");
+                }
+                const data = await response.json();
+                setPaymentRecord(data.data); // Lưu dữ liệu thanh toán
+            } catch (err) {
+                setError(err.message);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchPayment();
+    }, [tour]);
 
     const handleImageUpload = (event) => {
         if (event.target.files && event.target.files[0]) {
@@ -38,6 +58,14 @@ const PaymentPage = () => {
         return <div>Error: Missing tour details!</div>;
     }
 
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+
+    if (error) {
+        return <div>Error: {error}</div>;
+    }
+
     return (
         <div className="payment-page">
             <BookingHeader />
@@ -52,10 +80,6 @@ const PaymentPage = () => {
                         <div className="bid">
                             <div className="details-content">Payment ID:</div>
                             <div className="details-bid">{paymentRecord ? paymentRecord._id : "Not available"}</div>
-                        </div>
-                        <div className="bid">
-                            <div className="details-content">Payment Date:</div>
-                            <div className="details-bid">{paymentDate}</div>
                         </div>
                     </div>
 
