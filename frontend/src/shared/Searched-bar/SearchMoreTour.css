@@ -68,6 +68,11 @@ a {
     margin: 0;
     height: auto;
     padding: 10px;
+    outline: none;
+    font-size: 24px;
+    font-weight: 500;
+    font-family: var(--font);
+    color: #ffffff;
 }
 .SearchMoreTour .SearchMoreTour-one .select-group-new{
     height: auto;

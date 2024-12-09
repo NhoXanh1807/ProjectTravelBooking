@@ -22,135 +22,94 @@
   }
 
 
-.container {
-  margin: 0 auto;
-
-}
-
-/* Header */
-.header {
+.container{
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #eaf7f4;
-  padding: 15px 20px;
-  border-bottom: 1px solid #ddd;
-}
-
-.logo {
-  font-size: 24px;
-  color: #f3a240;
-  font-weight: bold;
-}
-
-.navigation a {
-  margin-right: 20px;
-  text-decoration: none;
-  color: #333;
-}
-
-.logout-btn {
-  background-color: #f3a240;
-  color: white;
-  padding: 8px 12px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-/* Main Content */
-.main-content {
-  background: white;
+  flex-direction: column;
+  gap: 30px;
   padding: 20px;
+}
+/* Main Content */
+.container .main-content {
+  height: auto;
+  background: #CEE7E6;
+  padding: 50px;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   margin-top: 20px;
-}
-
-.title {
-  font-size: 24px;
-  color: #1c3879;
-}
-
-.tabs {
   display: flex;
-  margin-top: 10px;
+  flex-direction: column;
+  gap: 20px;
 }
-
-.tab {
-  flex: 1;
-  padding: 10px 0;
-  text-align: center;
-  border: 1px solid #ddd;
-  cursor: pointer;
-}
-
-.tab.active {
-  background-color: #f3a240;
-  color: white;
-}
-
-/* Booking Details */
-.booking-details {
-  margin-top: 20px;
-}
-
-.info p,
-.trip-info p {
-  margin: 5px 0;
-}
-
-.trip-info h2 {
-  margin-top: 10px;
-  font-size: 18px;
-  color: #333;
-}
-
-.availability {
-  color: green;
-  font-weight: bold;
-}
-
-.total-payment,
-.total-refund {
-  margin-top: 20px;
-  font-size: 18px;
-  color: #f3a240;
-  font-weight: bold;
-}
-
-/* Transfer Details */
-.transfer-details {
-  margin-top: 20px;
-}
-
-.evidence-placeholder {
+.container .main-content .main-content-header{
   width: 100%;
-  height: 200px;
-  background-color: #eee;
-  border: 1px dashed #ddd;
-  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 24px;
+  font-family: var(--font);
+  font-weight: 500;
+  align-items: center;
+  border-bottom: 1px solid #667479;
+}
+.container .main-content .main-content-header button{
+  background-color: transparent;
+  border: 0;
+  font-size: 32px;
+  font-family: var(--font);
+  font-weight: 500;
+  color: #1E3050;
 }
 
-/* Actions */
-.actions {
-  margin-top: 20px;
+.container .main-content .booking-details .info{
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 }
-
-.approve-btn,
-.disapprove-btn {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+.container .main-content .booking-details .info .info-content{
+ color: #E5A13D;
+ font-size: 24px;
+ font-weight: 700;
+ font-family: var(--font);
+ width: 20%;
 }
-
-.approve-btn {
-  background-color: #007bff;
-  color: white;
+.container .main-content .booking-details .info .info-main{
+  width: 100%;
+  color: #667479;
+  font-size: 24px;
+  font-family: var(--font);
+  font-weight: 500;
 }
-
-.disapprove-btn {
-  background-color: #ff4c4c;
-  color: white;
+.container .main-content .booking-details .info .info-name{
+  display: flex;
+  gap: 30px;
+  border-bottom: 1px solid #667479;
+}
+.container .main-content .booking-details .info .info-tour{
+  display: flex;
+  gap: 30px;
+  border-bottom: 1px solid #667479;
+}
+.container .main-content .booking-details .info .info-status{
+  display: flex;
+  gap: 30px;
+  border-bottom: 1px solid #667479;
+}
+.container .main-content .booking-details .info .info-date{
+  display: flex;
+  gap: 30px;
+  border-bottom: 1px solid #667479;
+}
+.container .main-content .booking-details .info .info-price{
+  display: flex;
+  gap: 30px;
+  border-bottom: 1px solid #667479;
+}
+.container .main-content .booking-details .info .info-payment{
+  display: flex;
+  gap: 30px;
+  border-bottom: 1px solid #667479;
+}
+.container .main-content .booking-details .info .info-refund{
+  display: flex;
+  gap: 30px;
+  border-bottom: 1px solid #667479;
 }

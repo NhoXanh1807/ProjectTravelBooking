@@ -20,7 +20,7 @@ function Tag() {
                             activities tailored to every travel style.
                         </div>
                         <div className="inner-tag__buttons">
-                            <Link to={'/booking'}>
+                            <Link to={'/tour'}>
                                 Booking now
                             </Link>
                         </div>

@@ -12,24 +12,24 @@ const Reports = () => {
   const navigate = useNavigate();
   const itemsPerPage = 5; // Số lượng items mỗi trang
   const [currentPage, setCurrentPage] = useState(1);
-  const viewBooking = (bookingId) => {
-    navigate(`/view-booking/${bookingId}`); // Navigate with the booking ID
+  const viewBooking = (report) => {
+    navigate(`/view-booking/${report._id}`, { state: report });
   };
   // Calculate total pages
   // const totalPages = Math.ceil(reports.length / itemsPerPage);
 
   // Gọi API bằng useFetch
   const { data: reports, loading, error } = useFetch(`${BASE_URL}/bookings`);
-
+  console.log(reports)
   // Tính toán số trang
   const totalPages = reports ? Math.ceil(reports.length / itemsPerPage) : 0;
 
   // Lấy dữ liệu của trang hiện tại
   const currentData = reports
     ? reports.slice(
-        (currentPage - 1) * itemsPerPage,
-        currentPage * itemsPerPage
-      )
+      (currentPage - 1) * itemsPerPage,
+      currentPage * itemsPerPage
+    )
     : [];
 
   const goToPreviousPage = () => {
@@ -73,13 +73,13 @@ const Reports = () => {
                 <tr key={index}>
                   <td>{report._id}</td>
                   <td>{report.Name || "N/A"}</td>
-                  <td>{report.TourName|| "N/A"}</td>
+                  <td>{report.TourName || "N/A"}</td>
                   <td>{report.BookingStatus || "N/A"}</td>
                   <td>{new Date(report.BookingDate).toLocaleDateString()}</td>
                   <td>
                     <i
                       className="fa-solid fa-circle-info"
-                      onClick={() => viewBooking(report._id)}
+                      onClick={() => viewBooking(report)}
                       style={{ cursor: "pointer", fontSize: "24px" }}
                     ></i>
                   </td>

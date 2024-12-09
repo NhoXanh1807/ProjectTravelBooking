@@ -72,6 +72,11 @@ a {
 .searchMore .searchMore-one .search-keywords input{
     background-color: transparent;
     border: 0;
+    outline: none;
+    font-size: 24px;
+    font-weight: 500;
+    font-family: var(--font);
+    color: #ffffff;
 }
 .searchMore .searchMore-one .link-btn{
 width: 10%;
