@@ -74,22 +74,54 @@
     padding: 12px 28px 12px 28px;
     border-radius:  57px;
   }
-  .tourdetail-content .tourdetail-image .tourdetail-image-slice-bar{
+  .tourdetail-content .tourdetail-image .tourdetail-image-slice-bar {
     display: flex;
     overflow-x: auto;
-    padding: 10px;
     gap: 10px;
+    padding: 10px;
+    scroll-behavior: smooth;
   }
-  .tourdetail-content .tourdetail-image .tourdetail-image-slice-bar img{
+  
+  .tourdetail-content .tourdetail-image .tourdetail-image-slice-bar::-webkit-scrollbar {
+    height: 8px; /* Chiều cao của thanh cuộn ngang */
+  }
+  
+  .tourdetail-content .tourdetail-image .tourdetail-image-slice-bar::-webkit-scrollbar-track {
+    background: #EBEEEF; /* Màu nền của track */
+    border-radius: 10px;
+  }
+  
+  .tourdetail-content .tourdetail-image .tourdetail-image-slice-bar::-webkit-scrollbar-thumb {
+    background: #003459; /* Màu thanh cuộn */
+    border-radius: 10px;
+    border: 2px solid #EBEEEF; /* Viền tạo hiệu ứng tách biệt */
+  }
+  
+  .tourdetail-content .tourdetail-image .tourdetail-image-slice-bar::-webkit-scrollbar-thumb:hover {
+    background: #005f7f; /* Màu khi hover vào thanh cuộn */
+  }
+  
+  .tourdetail-content .tourdetail-image .tourdetail-image-slice-bar img {
     width: 94px;
     height: 94px;
     border-radius: 6px;
+    object-fit: cover;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
-  .tourdetail-content .tourdetail-image .tourdetail-image-main{
+  
+  .tourdetail-content .tourdetail-image .tourdetail-image-slice-bar img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  
+  .tourdetail-content .tourdetail-image .tourdetail-image-main {
     width: 100%;
   }
-  .tourdetail-content .tourdetail-image .tourdetail-image-main img{
+  
+  .tourdetail-content .tourdetail-image .tourdetail-image-main img {
     width: 100%;
     height: 100%;
     border-radius: 10px;
+    object-fit: cover;
   }
